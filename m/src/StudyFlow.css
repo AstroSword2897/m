@@ -1,0 +1,982 @@
+.study-flow-app {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.app-header {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.app-header h1 {
+  font-size: 2.5em;
+  color: #333;
+}
+
+.profile-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #ccc;
+  border-radius: 50%;
+}
+
+.app-main-content {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.smart-daily-planner p {
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.start-button, .do-now-button, .review-button, .journal-button {
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.start-button:hover, .do-now-button:hover, .review-button:hover, .journal-button:hover {
+  background-color: #d0d0d0;
+}
+
+.smart-daily-planner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.smart-daily-planner .start-button {
+  align-self: flex-end;
+  margin-top: 10px;
+}
+
+.learning-pulse-check .mood-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.learning-pulse-check .mood-buttons button {
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.learning-pulse-check .mood-buttons button:hover {
+  background-color: #d0d0d0;
+}
+
+.quick-study-mode .quick-study-input-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.quick-study-mode input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1em;
+}
+
+.quick-study-mode .do-now-button {
+  white-space: nowrap;
+}
+
+.memory-booster {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.app-footer {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.streak-counter {
+  font-size: 1em;
+  color: #666;
+}
+
+/* Flashcard Component Styles */
+.flashcard {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  height: 200px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flashcard-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.flashcard.flipped .flashcard-content {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+}
+
+.flashcard-back .review-buttons {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.flashcard-back .review-buttons button {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 0.8em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.flashcard-back .review-buttons button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Flashcards Section Styles */
+.flashcards-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.flashcard-input-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.flashcard-input-group input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1em;
+}
+
+.flashcard-input-group button {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.flashcard-input-group button:hover {
+  background-color: #45a049;
+}
+
+.flashcards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+  margin-top: 10px;
+  max-height: 400px; /* Limit height to enable scrolling */
+  overflow-y: auto;
+  padding-bottom: 0;
+}
+
+.flashcards-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.flashcards-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.flashcards-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.flashcards-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Quiz Builder Styles */
+.quiz-builder {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.quiz-builder h3 {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.question-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.question-input-group textarea,
+.question-input-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.question-input-group button {
+  background-color: #007bff; /* Blue */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.question-input-group button:hover {
+  background-color: #0056b3;
+}
+
+.current-questions {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.current-questions h4 {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.current-questions ul {
+  list-style: none;
+  padding: 0;
+}
+
+.current-questions li {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.current-questions li p {
+  margin: 5px 0;
+}
+
+.save-quiz-button {
+  background-color: #28a745; /* Green */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-end;
+  margin-top: 10px;
+}
+
+.save-quiz-button:hover {
+  background-color: #218838;
+}
+
+/* Quiz Builder and Saved Quizzes Section Styles */
+.quiz-builder-section,
+.saved-quizzes-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.saved-quizzes-section h2 {
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.saved-quizzes-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.saved-quizzes-section li {
+  background-color: #f0f8ff;
+  border: 1px solid #cceeff;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 8px;
+  font-size: 0.95em;
+  color: #333;
+}
+
+/* Concept Map Creator Styles */
+.concept-map-creator-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.concept-map-creator-section h2 {
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.concept-map-creator {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.concept-map-creator input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 0.9em;
+}
+
+.concept-map-creator button {
+  background-color: #6c757d; /* Grey */
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 8px 15px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.concept-map-creator button:hover {
+  background-color: #5a6268;
+}
+
+/* Note Summarizer Styles */
+.note-summarizer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.note-summarizer-section h3 {
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.note-summarizer .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.note-summarizer input[type="file"] {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1em;
+  background-color: #f9f9f9;
+}
+
+.note-summarizer textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+  min-height: 150px;
+  resize: vertical;
+}
+
+.note-summarizer button {
+  background-color: #ffc107; /* Amber/Yellow */
+  color: #333;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.note-summarizer button:hover {
+  background-color: #e0a800;
+}
+
+.summary-output {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.summary-output h4 {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.summary-output p {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  font-size: 0.95em;
+  line-height: 1.6;
+  white-space: pre-wrap; /* Preserve whitespace and line breaks */
+}
+
+/* Daily Challenge Styles */
+.daily-challenge-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.daily-challenge h3 {
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.daily-challenge .challenge-text {
+  font-size: 1.1em;
+  color: #555;
+  text-align: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  background-color: #fcfcfc;
+}
+
+.daily-challenge .timer-display {
+  font-size: 2em;
+  font-weight: bold;
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.daily-challenge .challenge-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.daily-challenge .challenge-controls button {
+  background-color: #28a745; /* Green */
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.daily-challenge .challenge-controls button:hover {
+  background-color: #218838;
+}
+
+.daily-challenge .challenge-controls button:nth-child(2) { /* Reset button */
+  background-color: #dc3545; /* Red */
+}
+
+.daily-challenge .challenge-controls button:nth-child(2):hover {
+  background-color: #c82333;
+}
+
+.daily-challenge .challenge-complete-message {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #28a745;
+}
+
+/* Voice Note Capture Styles */
+.voice-note-capture-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.voice-note-capture h3 {
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.voice-note-capture .controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.voice-note-capture button {
+  background-color: #ff4500; /* OrangeRed */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.voice-note-capture button:hover {
+  background-color: #cc3700;
+}
+
+.voice-note-capture .note-output {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  min-height: 100px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
+.voice-note-capture .note-output .interim-text {
+  color: #888;
+}
+
+.voice-note-capture .note-output .final-text {
+  color: #333;
+  font-weight: bold;
+}
+
+.captured-notes {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.captured-notes h4 {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.captured-notes ul {
+  list-style: none;
+  padding: 0;
+}
+
+.captured-notes li {
+  background-color: #e6f7ff;
+  border: 1px solid #91d5ff;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+  color: #333;
+  white-space: pre-wrap;
+}
+
+/* Note Highlighter Styles */
+.note-highlighter {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.note-highlighter h3 {
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.note-highlighter .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.note-highlighter textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+  min-height: 150px;
+  resize: vertical;
+}
+
+.note-highlighter input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.highlighted-output {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.highlighted-output h4 {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.highlighted-output p {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  font-size: 0.95em;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+/* Math Problem Solver Styles */
+.math-problem-solver-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.math-problem-solver h3 {
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.math-problem-solver .input-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.math-problem-solver input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.math-problem-solver button {
+  background-color: #f44336; /* Red */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.math-problem-solver button:hover {
+  background-color: #da190b;
+}
+
+.result-output,
+.explanation-output,
+.error-message {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.result-output {
+  background-color: #e8f5e9; /* Light Green */
+  border: 1px solid #c8e6c9;
+}
+
+.explanation-output {
+  background-color: #e3f2fd; /* Light Blue */
+  border: 1px solid #bbdefb;
+}
+
+.error-message {
+  background-color: #ffebee; /* Light Red */
+  border: 1px solid #ffcdd2;
+  color: #c62828;
+}
+
+.result-output h4,
+.explanation-output h4,
+.error-message p {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.result-output p,
+.explanation-output p {
+  font-size: 0.95em;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/* Code Simulator Styles */
+.code-simulator-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.code-simulator h3 {
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.code-editor-container {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.run-code-button {
+  background-color: #007bff; /* Blue */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  align-self: flex-start; /* Align button to the start */
+}
+
+.run-code-button:hover {
+  background-color: #0056b3;
+}
+
+.output-container {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.output-container h4 {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.code-output,
+.code-error {
+  background-color: #333;
+  color: #0f0;
+  padding: 15px;
+  border-radius: 8px;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  font-size: 0.9em;
+}
+
+.code-error {
+  color: #f00;
+}
+
+/* Chemistry Tool Styles */
+.chemistry-tool-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.chemistry-tool h3 {
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.chemistry-tool .tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.chemistry-tool .tabs button {
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 15px;
+  padding: 8px 15px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.chemistry-tool .tabs button.active {
+  background-color: #673ab7; /* Deep Purple */
+  color: white;
+}
+
+.chemistry-tool .tabs button:hover {
+  background-color: #d0d0d0;
+}
+
+.chemistry-tool .tabs button.active:hover {
+  background-color: #5e35b1;
+}
+
+.tab-content {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.formula-sheet h4,
+.periodic-table-display h4 {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.formula-sheet ul {
+  list-style: none;
+  padding: 0;
+}
+
+.formula-sheet li {
+  background-color: #e3f2fd;
+  border: 1px solid #bbdefb;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+}
+
+.elements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.element-tile {
+  background-color: #fffde7; /* Light Yellow */
+  border: 1px solid #ffe082;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+.element-tile .atomic-number {
+  font-size: 0.7em;
+  color: #777;
+}
+
+.element-tile .symbol {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+}
+
+.element-tile .name {
+  font-size: 0.7em;
+  color: #555;
+}
+
+.element-tile .mass {
+  font-size: 0.6em;
+  color: #999;
+  margin-top: 3px;
+}
+
+.periodic-table-display .note {
+  font-size: 0.8em;
+  color: #777;
+  margin-top: 15px;
+  text-align: center;
+} 
