@@ -18,8 +18,10 @@ const Navigation = ({ onThemeToggle, isDarkMode }: NavigationProps) => {
     { path: '/practice', label: 'Practice', icon: '✍️' },
     { path: '/flashcards', label: 'Flashcards', icon: '🎴' },
     { path: '/schedule', label: 'Schedule', icon: '📅' },
-    { path: '/progress', label: 'Progress', icon: '📈' },
+    { path: '/progress', label: 'Progress', icon: '��' },
+    { path: '/analytics', label: 'Analytics', icon: '📈' },
     { path: '/collaborate', label: 'Collaborate', icon: '👥' },
+    { path: '/profile', label: 'Profile', icon: '👤' },
   ];
 
   return (
