@@ -10,6 +10,7 @@ import Schedule from './pages/Schedule'
 import Progress from './pages/Progress'
 import Collaborate from './pages/Collaborate'
 import UserProfile from './pages/UserProfile'
+import Analytics from './pages/Analytics'
 import './App.css'
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
             <Route path="/progress" element={<Progress />} />
             <Route path="/collaborate" element={<Collaborate />} />
             <Route path="/profile" element={<UserProfile />} />
+            <Route path="/analytics" element={<Analytics />} />
           </Routes>
         </main>
       </div>
