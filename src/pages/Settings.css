@@ -1,0 +1,52 @@
+.settings-page {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.settings-container {
+  padding: 2rem;
+  border-radius: 8px;
+  background-color: var(--background-card);
+  box-shadow: var(--shadow-medium);
+}
+
+.settings-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.settings-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.settings-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.settings-actions {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Dark mode styles */
+.dark-mode .settings-container {
+  background-color: var(--background-secondary);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .settings-page {
+    padding: 1rem;
+  }
+
+  .settings-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+} 
