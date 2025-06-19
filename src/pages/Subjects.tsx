@@ -8,15 +8,13 @@ import {
   Button,
   TextField,
   InputAdornment,
-  IconButton,
   Chip,
   Box,
   CircularProgress
 } from '@mui/material';
 import {
   Search as SearchIcon,
-  Add as AddIcon,
-  FilterList as FilterIcon
+  Add as AddIcon
 } from '@mui/icons-material';
 import './Subjects.css';
 

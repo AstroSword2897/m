@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import {
   Container,
   Typography,
@@ -22,7 +21,6 @@ import {
 import {
   AccountCircle as AccountCircleIcon,
   Settings as SettingsIcon,
-  Favorite as FavoriteIcon,
   EventNote as EventNoteIcon,
   Edit as EditIcon,
   Save as SaveIcon,
@@ -87,7 +85,7 @@ const UserProfile: React.FC = () => {
     },
   });
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
@@ -96,17 +94,11 @@ const UserProfile: React.FC = () => {
     setProfile(prev => ({ ...prev, [name]: value }));
   };
 
-  const handlePreferenceChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | { name?: string; value: unknown }>, type: string) => {
-    if (type === 'switch') {
-      setPreferences(prev => ({ ...prev, [event.target.name as string]: (event.target as HTMLInputElement).checked }));
-    } else if (type === 'slider') {
-      setPreferences(prev => ({ ...prev, studyReminderTime: event as unknown as number }));
-    } else if (type === 'select') {
-      setPreferences(prev => ({ ...prev, preferredSubject: event.target.value as string }));
-    } else {
-      const { name, value } = event.target as HTMLInputElement | HTMLTextAreaElement;
-      setPreferences(prev => ({ ...prev, [name]: value }));
-    }
+  const handlePreferenceChange = (name: string, value: any) => {
+    setPreferences(prev => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleStudyGoalChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -237,7 +229,7 @@ const UserProfile: React.FC = () => {
                   control={
                     <Switch
                       checked={preferences.darkMode}
-                      onChange={(e) => handlePreferenceChange(e, 'switch')}
+                      onChange={(e) => handlePreferenceChange('darkMode', e.target.checked)}
                       name="darkMode"
                     />
                   }
@@ -249,7 +241,7 @@ const UserProfile: React.FC = () => {
                   control={
                     <Switch
                       checked={preferences.notifications}
-                      onChange={(e) => handlePreferenceChange(e, 'switch')}
+                      onChange={(e) => handlePreferenceChange('notifications', e.target.checked)}
                       name="notifications"
                     />
                   }
@@ -260,7 +252,7 @@ const UserProfile: React.FC = () => {
                 <Typography gutterBottom>Study Reminder Time (minutes)</Typography>
                 <Slider
                   value={preferences.studyReminderTime}
-                  onChange={(e, val) => handlePreferenceChange(val, 'slider')}
+                  onChange={(_, val) => handlePreferenceChange('studyReminderTime', val)}
                   aria-labelledby="study-reminder-time-slider"
                   valueLabelDisplay="auto"
                   step={10}
@@ -276,7 +268,7 @@ const UserProfile: React.FC = () => {
                     labelId="preferred-subject-label"
                     id="preferred-subject-select"
                     value={preferences.preferredSubject}
-                    onChange={(e) => handlePreferenceChange(e, 'select')}
+                    onChange={(e) => handlePreferenceChange('preferredSubject', e.target.value)}
                     label="Preferred Study Subject"
                   >
                     <MenuItem value="Mathematics">Mathematics</MenuItem>

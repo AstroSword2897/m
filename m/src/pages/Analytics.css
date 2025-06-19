@@ -1,0 +1,169 @@
+.analytics-page {
+  padding: 40px 20px;
+}
+
+.analytics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.page-title {
+  font-size: 2.5rem !important;
+  color: var(--primary-pink);
+  font-weight: bold;
+}
+
+.summary-metrics-grid {
+  margin-bottom: 50px;
+}
+
+.metric-card {
+  background-color: var(--card-background) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  color: var(--text-light) !important;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.metric-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+.metric-icon {
+  font-size: 2.5rem !important;
+  color: var(--secondary-purple);
+  margin-bottom: 10px;
+}
+
+.metric-title {
+  font-size: 1rem !important;
+  color: var(--text-muted);
+  margin-bottom: 5px !important;
+}
+
+.metric-value {
+  font-size: 2rem !important;
+  font-weight: bold;
+  color: var(--primary-pink);
+}
+
+.charts-grid {
+  margin-bottom: 50px;
+}
+
+.chart-card {
+  background-color: var(--card-background) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  color: var(--text-light) !important;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+.chart-title {
+  font-size: 1.8rem !important;
+  font-weight: bold;
+  margin-bottom: 20px !important;
+  color: var(--primary-pink);
+  text-align: center;
+}
+
+.recharts-wrapper .recharts-surface {
+  overflow: visible !important;
+}
+
+.recharts-tooltip-wrapper .recharts-tooltip-item {
+  color: var(--text-light) !important;
+}
+
+.recharts-legend-wrapper .recharts-legend-item {
+  color: var(--text-light) !important;
+}
+
+.recharts-tooltip-label {
+  color: var(--primary-pink) !important;
+}
+
+.recharts-cartesian-axis-line,
+.recharts-cartesian-axis-tick-line {
+  stroke: var(--border-color) !important;
+}
+
+.recharts-cartesian-axis-tick-value {
+  fill: var(--text-muted) !important;
+}
+
+.recharts-tooltip-item-name {
+  color: var(--text-muted) !important;
+}
+
+.recharts-tooltip-item-value {
+  color: var(--primary-pink) !important;
+}
+
+.detailed-performance-section {
+  margin-top: 50px;
+}
+
+.section-title {
+  font-size: 2rem !important;
+  color: var(--primary-pink);
+  font-weight: bold;
+  margin-bottom: 30px !important;
+  text-align: center;
+}
+
+.detail-performance-card {
+  background-color: var(--card-background) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  color: var(--text-light) !important;
+  height: 100%;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.detail-performance-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.detail-subject-title {
+  font-size: 1.4rem !important;
+  font-weight: bold;
+  color: var(--primary-pink);
+  margin-bottom: 15px !important;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.detail-item typography {
+  color: var(--text-muted);
+}
+
+.detail-chip-score {
+  background-color: rgba(var(--primary-pink), 0.2) !important;
+  color: var(--primary-pink) !important;
+  font-size: 0.9rem !important;
+}
+
+.detail-chip-questions {
+  background-color: rgba(var(--secondary-purple), 0.2) !important;
+  color: var(--secondary-purple) !important;
+  font-size: 0.9rem !important;
+} 

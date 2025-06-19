@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import {
   Container,
+  Paper,
   Typography,
   Box,
-  Paper,
   FormControlLabel,
   Switch,
   Slider,
-  TextField,
   Button,
-  Grid,
   MenuItem,
   Select,
   InputLabel,
@@ -45,26 +43,11 @@ const Settings: React.FC = () => {
     syncOutlookCalendar: false,
   });
 
-  const handleSettingChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | { name?: string; value: unknown }>, type: string) => {
-    if (type === 'switch') {
-      setSettings(prev => ({
-        ...prev,
-        [event.target.name as keyof SettingsState]: (event.target as HTMLInputElement).checked,
-      }));
-    } else if (type === 'slider') {
-      setSettings(prev => ({
-        ...prev,
-        studyReminderInterval: event as unknown as number,
-      }));
-    } else if (type === 'select') {
-      setSettings(prev => ({
-        ...prev,
-        [event.target.name as keyof SettingsState]: event.target.value as string,
-      }));
-    } else {
-      const { name, value } = event.target as HTMLInputElement | HTMLTextAreaElement;
-      setSettings(prev => ({ ...prev, [name as keyof SettingsState]: value }));
-    }
+  const handleSettingChange = (name: string, value: any) => {
+    setSettings(prev => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSaveSettings = () => {
@@ -92,7 +75,7 @@ const Settings: React.FC = () => {
               id="theme-select"
               name="theme"
               value={settings.theme}
-              onChange={(e) => handleSettingChange(e, 'select')}
+              onChange={(e) => handleSettingChange('theme', e.target.value)}
               label="Application Theme"
             >
               <MenuItem value="light">Light Mode</MenuItem>
@@ -110,7 +93,7 @@ const Settings: React.FC = () => {
             control={
               <Switch
                 checked={settings.enableNotifications}
-                onChange={(e) => handleSettingChange(e, 'switch')}
+                onChange={(e) => handleSettingChange('enableNotifications', e.target.checked)}
                 name="enableNotifications"
               />
             }
@@ -120,7 +103,7 @@ const Settings: React.FC = () => {
             control={
               <Switch
                 checked={settings.notificationSound}
-                onChange={(e) => handleSettingChange(e, 'switch')}
+                onChange={(e) => handleSettingChange('notificationSound', e.target.checked)}
                 name="notificationSound"
               />
             }
@@ -129,7 +112,7 @@ const Settings: React.FC = () => {
           <Typography gutterBottom sx={{ mt: 2 }}>Study Reminder Interval (minutes)</Typography>
           <Slider
             value={settings.studyReminderInterval}
-            onChange={(e, val) => handleSettingChange(val, 'slider')}
+            onChange={(_, val) => handleSettingChange('studyReminderInterval', val)}
             aria-labelledby="study-reminder-interval-slider"
             valueLabelDisplay="auto"
             step={10}
@@ -151,7 +134,7 @@ const Settings: React.FC = () => {
               id="preferred-study-time-select"
               name="preferredStudyTime"
               value={settings.preferredStudyTime}
-              onChange={(e) => handleSettingChange(e, 'select')}
+              onChange={(e) => handleSettingChange('preferredStudyTime', e.target.value)}
               label="Preferred Study Time"
             >
               <MenuItem value="morning">Morning (6 AM - 12 PM)</MenuItem>
@@ -171,7 +154,7 @@ const Settings: React.FC = () => {
             control={
               <Switch
                 checked={settings.syncGoogleCalendar}
-                onChange={(e) => handleSettingChange(e, 'switch')}
+                onChange={(e) => handleSettingChange('syncGoogleCalendar', e.target.checked)}
                 name="syncGoogleCalendar"
               />
             }
@@ -181,7 +164,7 @@ const Settings: React.FC = () => {
             control={
               <Switch
                 checked={settings.syncOutlookCalendar}
-                onChange={(e) => handleSettingChange(e, 'switch')}
+                onChange={(e) => handleSettingChange('syncOutlookCalendar', e.target.checked)}
                 name="syncOutlookCalendar"
               />
             }

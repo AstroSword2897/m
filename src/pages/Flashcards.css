@@ -144,4 +144,76 @@
 
 .dark-mode .stat h6 {
   color: var(--primary-color-light);
+}
+
+.spaced-rep-banner {
+  background: linear-gradient(90deg, #ffe29f 0%, #ffa99f 100%);
+  color: #4a2c00;
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  font-size: 1.1rem;
+  margin: 1.5rem 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 8px rgba(255, 174, 0, 0.08);
+}
+
+.create-set-btn {
+  background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%);
+  color: #222;
+  font-weight: bold;
+  border-radius: 12px;
+  margin-top: 1rem;
+  box-shadow: 0 2px 8px rgba(168, 237, 234, 0.12);
+  transition: background 0.2s;
+}
+.create-set-btn:hover {
+  background: linear-gradient(90deg, #fed6e3 0%, #a8edea 100%);
+}
+
+.why-spaced-rep-card, .streaks-badges-card {
+  background: #f7faff;
+  border-radius: 16px;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0 1rem 0;
+  box-shadow: 0 2px 8px rgba(100, 200, 255, 0.08);
+}
+.why-spaced-rep-card h3, .streaks-badges-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: #2d6a8c;
+}
+.coming-soon {
+  background: #ffe29f;
+  color: #b36b00;
+  border-radius: 8px;
+  padding: 0.1em 0.5em;
+  font-size: 0.9em;
+  margin-left: 0.5em;
+}
+
+.flashcards-feedback {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 } 

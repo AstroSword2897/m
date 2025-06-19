@@ -1,0 +1,141 @@
+.study-materials-page {
+  padding: 40px 20px;
+}
+
+.materials-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.page-title {
+  font-size: 2.5rem !important;
+  color: var(--primary-pink);
+  font-weight: bold;
+}
+
+.add-material-button {
+  background-color: var(--secondary-purple) !important;
+  color: var(--text-light) !important;
+  padding: 10px 20px !important;
+  font-size: 1rem !important;
+  border-radius: 8px !important;
+  transition: background-color 0.3s ease;
+}
+
+.add-material-button:hover {
+  background-color: var(--primary-pink) !important;
+}
+
+.materials-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+  background-color: var(--card-background);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.search-input .MuiOutlinedInput-root,
+.filter-select .MuiOutlinedInput-root {
+  color: var(--text-light) !important;
+  border-color: var(--border-color) !important;
+}
+
+.search-input .MuiOutlinedInput-notchedOutline,
+.filter-select .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-color) !important;
+}
+
+.search-input .MuiInputLabel-root,
+.filter-select .MuiInputLabel-root {
+  color: var(--text-muted) !important;
+}
+
+.search-input .MuiInputAdornment-root .MuiSvgIcon-root,
+.filter-select .MuiInputAdornment-root .MuiSvgIcon-root {
+  color: var(--text-muted) !important;
+}
+
+.material-card {
+  background-color: var(--card-background) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  color: var(--text-light) !important;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.material-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+.material-title {
+  font-size: 1.5rem !important;
+  font-weight: bold;
+  margin-bottom: 10px !important;
+  color: var(--primary-pink);
+}
+
+.material-description {
+  font-size: 0.95rem !important;
+  color: var(--text-muted) !important;
+  margin-bottom: 15px !important;
+  flex-grow: 1;
+}
+
+.material-info {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.material-type-chip,
+.material-subject-chip {
+  background-color: rgba(var(--secondary-purple), 0.2) !important;
+  color: var(--secondary-purple) !important;
+  font-size: 0.8rem !important;
+}
+
+.material-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.material-tag-chip {
+  background-color: rgba(var(--primary-pink), 0.2) !important;
+  color: var(--primary-pink) !important;
+  font-size: 0.8rem !important;
+}
+
+.material-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.material-action-button {
+  color: var(--text-muted) !important;
+}
+
+.material-action-button:hover {
+  color: var(--primary-pink) !important;
+}
+
+.no-materials-message {
+  color: var(--text-muted) !important;
+  margin-top: 50px !important;
+} 

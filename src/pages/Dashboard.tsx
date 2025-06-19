@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './Dashboard.css';
 
 interface StudySession {
@@ -16,26 +15,35 @@ interface DailyProgress {
   target: number;
 }
 
-const Dashboard = () => {
-  const [studySessions] = useState<StudySession[]>([
-    { id: 1, subject: 'AP Biology', topic: 'Cell Structure', duration: 30, completed: false },
-    { id: 2, subject: 'AP Calculus', topic: 'Derivatives', duration: 45, completed: false },
-    { id: 3, subject: 'AP Chemistry', topic: 'Chemical Reactions', duration: 60, completed: false },
-  ]);
+const mockStudySessions: StudySession[] = [
+  { id: 1, subject: 'AP Biology', topic: 'Cell Structure', duration: 30, completed: false },
+  { id: 2, subject: 'AP Calculus', topic: 'Derivatives', duration: 45, completed: false },
+  { id: 3, subject: 'AP Chemistry', topic: 'Chemical Reactions', duration: 60, completed: false },
+];
+const mockDailyProgress: DailyProgress[] = [
+  { subject: 'AP Biology', progress: 75, target: 120 },
+  { subject: 'AP Calculus', progress: 60, target: 90 },
+  { subject: 'AP Chemistry', progress: 45, target: 90 },
+];
 
-  const [dailyProgress] = useState<DailyProgress[]>([
-    { subject: 'AP Biology', progress: 75, target: 120 },
-    { subject: 'AP Calculus', progress: 60, target: 90 },
-    { subject: 'AP Chemistry', progress: 45, target: 90 },
-  ]);
+const Dashboard = () => {
+  const [studySessions] = useState<StudySession[]>(mockStudySessions);
+  const [dailyProgress] = useState<DailyProgress[]>(mockDailyProgress);
+
+  const handleReset = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
 
   return (
     <div className="dashboard">
       <div className="dashboard-header">
-        <h1>Welcome back, Student!</h1>
-        <p>Here's your study overview for today</p>
+        <h1>📚 StudyFlow — Smarter Study, Less Stress</h1>
+        <button onClick={handleReset} style={{ float: 'right', background: '#f44336', color: 'white', border: 'none', borderRadius: 8, padding: '8px 16px', cursor: 'pointer' }}>Reset StudyFlow</button>
+        <p className="dashboard-tagline">
+          Welcome back! Ready to crush your study goals today?
+        </p>
       </div>
-
       <div className="dashboard-grid">
         {/* Today's Schedule */}
         <div className="card schedule-card">
@@ -55,7 +63,6 @@ const Dashboard = () => {
             ))}
           </div>
         </div>
-
         {/* Progress Overview */}
         <div className="card progress-card">
           <h2>Study Progress</h2>
@@ -78,30 +85,28 @@ const Dashboard = () => {
             ))}
           </div>
         </div>
-
         {/* Quick Actions */}
         <div className="card quick-actions-card">
           <h2>Quick Actions</h2>
           <div className="quick-actions-grid">
-            <Link to="/flashcards" className="quick-action">
+            <button className="quick-action">
               <span className="icon">🎴</span>
               <span>Review Flashcards</span>
-            </Link>
-            <Link to="/practice" className="quick-action">
+            </button>
+            <button className="quick-action">
               <span className="icon">✍️</span>
               <span>Practice Questions</span>
-            </Link>
-            <Link to="/study-materials" className="quick-action">
+            </button>
+            <button className="quick-action">
               <span className="icon">📝</span>
               <span>Study Materials</span>
-            </Link>
-            <Link to="/schedule" className="quick-action">
+            </button>
+            <button className="quick-action">
               <span className="icon">📅</span>
               <span>Schedule</span>
-            </Link>
+            </button>
           </div>
         </div>
-
         {/* Upcoming Exams */}
         <div className="card exams-card">
           <h2>Upcoming Exams</h2>

@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import { User } from '../models/User';
+import { UserModel } from '../models/User';
 
 interface AuthRequest extends Request {
-  user?: any;
+  user?: { id: string };
 }
 
 export const auth = async (req: AuthRequest, res: Response, next: NextFunction) => {
@@ -14,14 +14,14 @@ export const auth = async (req: AuthRequest, res: Response, next: NextFunction) 
       throw new Error();
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your_jwt_secret_key_here');
-    const user = await User.findOne({ _id: (decoded as any)._id });
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your_jwt_secret_key_here') as { id: string };
+    const user = await UserModel.findById(decoded.id);
 
     if (!user) {
       throw new Error();
     }
 
-    req.user = user;
+    req.user = { id: user.id! };
     next();
   } catch (error) {
     res.status(401).json({ error: 'Please authenticate.' });

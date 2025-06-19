@@ -1,0 +1,309 @@
+.flashcards-page {
+  padding: 40px 20px;
+}
+
+.flashcards-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.page-title {
+  font-size: 2.5rem !important;
+  color: var(--primary-pink);
+  font-weight: bold;
+}
+
+.add-flashcard-button {
+  background-color: var(--secondary-purple) !important;
+  color: var(--text-light) !important;
+  padding: 10px 20px !important;
+  font-size: 1rem !important;
+  border-radius: 8px !important;
+  transition: background-color 0.3s ease;
+}
+
+.add-flashcard-button:hover {
+  background-color: var(--primary-pink) !important;
+}
+
+.flashcard-summary {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.summary-text {
+  font-size: 1.2rem !important;
+  color: var(--text-light);
+}
+
+.summary-text .due-count {
+  color: var(--primary-pink);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.start-review-button {
+  background-color: var(--primary-pink) !important;
+  color: var(--text-light) !important;
+  padding: 12px 25px !important;
+  font-size: 1.1rem !important;
+  border-radius: 8px !important;
+}
+
+.start-review-button:hover {
+  background-color: var(--secondary-purple) !important;
+}
+
+.flashcard-review-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.review-counter {
+  color: var(--text-muted);
+  margin-bottom: 20px !important;
+}
+
+.flashcard-card {
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.flashcard-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  color: var(--text-light);
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+}
+
+.card-content-text {
+  font-size: 1.8rem !important;
+  font-weight: bold;
+  margin-bottom: 20px !important;
+  color: var(--primary-pink);
+}
+
+.card-info-text {
+  font-size: 0.9rem !important;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+.flip-button {
+  color: var(--primary-pink) !important;
+  border-color: var(--primary-pink) !important;
+  margin-top: 20px !important;
+  padding: 10px 20px !important;
+}
+
+.flip-button:hover {
+  background-color: rgba(var(--primary-pink), 0.1) !important;
+}
+
+.review-quality-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.quality-button {
+  font-size: 0.9rem !important;
+  padding: 8px 15px !important;
+  border-radius: 5px !important;
+}
+
+.quality-button.bad {
+  background-color: #dc143c !important; /* Crimson */
+}
+.quality-button.hard {
+  background-color: #ff8c00 !important; /* DarkOrange */
+}
+.quality-button.good {
+  background-color: #3cb371 !important; /* MediumSeaGreen */
+}
+.quality-button.easy {
+  background-color: #1e90ff !important; /* DodgerBlue */
+}
+
+.quality-button:hover {
+  opacity: 0.8;
+}
+
+.all-flashcards-section {
+  margin-top: 50px;
+}
+
+.section-title {
+  font-size: 2rem !important;
+  color: var(--primary-pink);
+  font-weight: bold;
+  margin-bottom: 30px !important;
+  text-align: center;
+}
+
+.flashcard-list-item {
+  background-color: var(--card-background) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 10px !important;
+  padding: 15px !important;
+  color: var(--text-light) !important;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.flashcard-list-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.list-card-front {
+  font-size: 1.2rem !important;
+  font-weight: bold;
+  color: var(--primary-pink);
+  margin-bottom: 8px !important;
+}
+
+.list-card-back {
+  font-size: 0.95rem !important;
+  color: var(--text-muted);
+  margin-bottom: 12px !important;
+}
+
+.list-card-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.list-chip-deck,
+.list-chip-review,
+.list-chip-tag {
+  background-color: rgba(var(--secondary-purple), 0.1) !important;
+  color: var(--secondary-purple) !important;
+  font-size: 0.75rem !important;
+}
+
+.list-chip-review {
+  background-color: rgba(var(--primary-pink), 0.1) !important;
+  color: var(--primary-pink) !important;
+}
+
+.list-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.list-action-button {
+  color: var(--text-muted) !important;
+}
+
+.list-action-button:hover {
+  color: var(--primary-pink) !important;
+}
+
+.list-action-button.delete {
+  color: #dc143c !important; /* Crimson */
+}
+
+.list-action-button.delete:hover {
+  background-color: rgba(220, 20, 60, 0.1) !important;
+}
+
+.no-cards-message {
+  color: var(--text-muted);
+  text-align: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.add-flashcard-dialog-paper {
+  background-color: var(--card-background) !important;
+  color: var(--text-light) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+}
+
+.add-flashcard-dialog-title {
+  color: var(--primary-pink) !important;
+  font-weight: bold !important;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.add-flashcard-dialog-content .dialog-text-field .MuiOutlinedInput-root {
+  color: var(--text-light) !important;
+  border-color: var(--border-color) !important;
+}
+
+.add-flashcard-dialog-content .dialog-text-field .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-color) !important;
+}
+
+.add-flashcard-dialog-content .dialog-text-field .MuiInputLabel-root {
+  color: var(--text-muted) !important;
+}
+
+.add-flashcard-dialog-actions {
+  padding: 20px 24px !important;
+  border-top: 1px solid var(--border-color);
+}
+
+.dialog-cancel-button {
+  color: var(--text-muted) !important;
+}
+
+.dialog-cancel-button:hover {
+  color: var(--primary-pink) !important;
+}
+
+.dialog-add-button {
+  background-color: var(--secondary-purple) !important;
+  color: var(--text-light) !important;
+}
+
+.dialog-add-button:hover {
+  background-color: var(--primary-pink) !important;
+} 
