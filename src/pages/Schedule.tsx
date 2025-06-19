@@ -24,13 +24,12 @@ import {
   InputLabel
 } from '@mui/material';
 import {
-  Search as SearchIcon,
   Add as AddIcon,
+  Search as SearchIcon,
   MoreVert as MoreVertIcon,
   School as SchoolIcon,
   AccessTime as TimeIcon,
-  Event as EventIcon,
-  CheckCircle as CheckCircleIcon
+  Event as EventIcon
 } from '@mui/icons-material';
 import './Schedule.css';
 
@@ -99,7 +98,7 @@ const Schedule: React.FC = () => {
     ];
     setSessions(mockSessions);
     setLoading(false);
-  }, []);
+  }, [selectedSession]);
 
   const filteredSessions = sessions.filter(session => {
     const matchesSearch = session.title.toLowerCase().includes(searchQuery.toLowerCase()) ||

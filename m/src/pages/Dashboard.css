@@ -1,0 +1,82 @@
+.dashboard-page {
+  padding: 40px 20px;
+}
+
+.welcome-section {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 30px;
+  background: linear-gradient(45deg, var(--secondary-purple), var(--primary-pink));
+  border-radius: 15px;
+  color: var(--text-light);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.welcome-title {
+  font-size: 3.5rem !important;
+  font-weight: bold;
+  margin-bottom: 10px !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-subtitle {
+  font-size: 1.5rem !important;
+  opacity: 0.9;
+}
+
+.dashboard-grid {
+  margin-top: 30px;
+}
+
+.dashboard-card {
+  background-color: var(--card-background) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  text-align: center;
+  color: var(--text-light) !important;
+  height: 100%; /* Ensure cards in a row have equal height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+}
+
+.card-icon {
+  font-size: 3.5rem !important;
+  color: var(--primary-pink);
+  margin-bottom: 15px;
+}
+
+.card-title {
+  font-size: 1.8rem !important;
+  font-weight: bold;
+  margin-bottom: 10px !important;
+  color: var(--primary-pink);
+}
+
+.card-description {
+  font-size: 1rem !important;
+  color: var(--text-muted);
+  margin-bottom: 20px !important;
+  flex-grow: 1; /* Allows description to take available space */
+}
+
+.card-button {
+  background-color: var(--secondary-purple) !important;
+  color: var(--text-light) !important;
+  padding: 12px 25px !important;
+  font-size: 1.1rem !important;
+  border-radius: 8px !important;
+  margin-top: auto; /* Pushes button to the bottom */
+}
+
+.card-button:hover {
+  background-color: var(--primary-pink) !important;
+  transform: scale(1.05);
+} 

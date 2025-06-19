@@ -1,8 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import ReactFlow, { 
   addEdge, 
-  applyNodeChanges, 
-  applyEdgeChanges, 
   type Node, 
   type Edge, 
   type Connection,
@@ -29,7 +27,7 @@ const ConceptMapCreator: React.FC = () => {
   const [newNodeLabel, setNewNodeLabel] = useState('');
 
   const onConnect = useCallback((connection: Connection) => {
-    setEdges((eds) => addEdge(connection, eds));
+    setEdges((eds: Edge[]) => addEdge(connection, eds));
   }, [setEdges]);
 
   const addNode = () => {
@@ -39,7 +37,7 @@ const ConceptMapCreator: React.FC = () => {
       position: { x: Math.random() * 400, y: Math.random() * 400 },
       data: { label: newNodeLabel },
     };
-    setNodes((nds) => nds.concat(newNode));
+    setNodes((nds: Node[]) => nds.concat(newNode));
     setNewNodeLabel('');
   };
 

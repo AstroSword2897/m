@@ -1,0 +1,165 @@
+.practice-page {
+  padding: 40px 20px;
+}
+
+.start-card,
+.results-card,
+.question-card {
+  background-color: var(--card-background) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  padding: 30px !important;
+  color: var(--text-light) !important;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+.start-title,
+.results-title,
+.question-text {
+  font-size: 2rem !important;
+  font-weight: bold;
+  margin-bottom: 20px !important;
+  color: var(--primary-pink);
+}
+
+.filter-controls .MuiTextField-root {
+  margin-bottom: 20px !important;
+}
+
+.filter-select .MuiOutlinedInput-root {
+  color: var(--text-light) !important;
+  border-color: var(--border-color) !important;
+}
+
+.filter-select .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-color) !important;
+}
+
+.filter-select .MuiInputLabel-root {
+  color: var(--text-muted) !important;
+}
+
+.filter-select .MuiInputAdornment-root .MuiSvgIcon-root {
+  color: var(--text-muted) !important;
+}
+
+.start-button,
+.next-button,
+.retry-button {
+  background-color: var(--secondary-purple) !important;
+  color: var(--text-light) !important;
+  padding: 12px 25px !important;
+  font-size: 1.1rem !important;
+  border-radius: 8px !important;
+  margin-top: 20px !important;
+}
+
+.start-button:hover,
+.next-button:hover,
+.retry-button:hover {
+  background-color: var(--primary-pink) !important;
+}
+
+.no-questions-message {
+  color: var(--primary-pink) !important;
+  margin-top: 20px !important;
+}
+
+.score-text {
+  color: var(--primary-pink);
+  font-weight: bold;
+  margin-bottom: 15px !important;
+}
+
+.score-progress .MuiLinearProgress-bar {
+  background-color: var(--primary-pink) !important;
+}
+
+.back-to-filters-button {
+  color: var(--primary-pink) !important;
+  border-color: var(--primary-pink) !important;
+  margin-top: 15px !important;
+  padding: 10px 20px !important;
+}
+
+.back-to-filters-button:hover {
+  background-color: rgba(var(--primary-pink), 0.1) !important;
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.question-counter {
+  color: var(--text-muted);
+}
+
+.subject-chip,
+.difficulty-chip {
+  background-color: rgba(var(--secondary-purple), 0.2) !important;
+  color: var(--secondary-purple) !important;
+  font-size: 0.8rem !important;
+  margin-left: 10px;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.option-button {
+  text-align: left;
+  justify-content: flex-start;
+  color: var(--text-light) !important;
+  border-color: var(--border-color) !important;
+  padding: 15px 20px !important;
+  font-size: 1rem !important;
+  border-radius: 8px !important;
+}
+
+.option-button.correct {
+  background-color: rgba(60, 179, 113, 0.2) !important; /* MediumSeaGreen */
+  border-color: #3cb371 !important;
+  color: #3cb371 !important;
+}
+
+.option-button.incorrect {
+  background-color: rgba(220, 20, 60, 0.2) !important; /* Crimson */
+  border-color: #dc143c !important;
+  color: #dc143c !important;
+}
+
+.option-button:hover {
+  background-color: rgba(var(--primary-pink), 0.1) !important;
+}
+
+.option-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.explanation-box {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: var(--background-dark);
+  border: 1px solid var(--primary-pink);
+  border-radius: 10px;
+}
+
+.explanation-title {
+  color: var(--primary-pink);
+  font-weight: bold;
+  margin-bottom: 10px !important;
+}
+
+.explanation-text {
+  color: var(--text-muted);
+  margin-bottom: 20px !important;
+} 

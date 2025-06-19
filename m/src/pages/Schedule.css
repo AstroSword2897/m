@@ -1,0 +1,163 @@
+.schedule-page {
+  padding: 40px 20px;
+}
+
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.page-title {
+  font-size: 2.5rem !important;
+  color: var(--primary-pink);
+  font-weight: bold;
+}
+
+.add-schedule-button {
+  background-color: var(--secondary-purple) !important;
+  color: var(--text-light) !important;
+  padding: 10px 20px !important;
+  font-size: 1rem !important;
+  border-radius: 8px !important;
+  transition: background-color 0.3s ease;
+}
+
+.add-schedule-button:hover {
+  background-color: var(--primary-pink) !important;
+}
+
+.schedule-list-container {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.no-events-message {
+  color: var(--text-muted) !important;
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+}
+
+.schedule-list-item {
+  border-bottom: 1px solid var(--border-color) !important;
+  padding: 15px 0 !important;
+}
+
+.schedule-list-item:last-child {
+  border-bottom: none !important;
+}
+
+.item-title {
+  font-size: 1.2rem !important;
+  font-weight: bold;
+  color: var(--primary-pink);
+  margin-right: 10px;
+}
+
+.item-datetime {
+  font-size: 0.9rem !important;
+  color: var(--text-muted);
+  margin-top: 5px;
+  display: block;
+}
+
+.item-description {
+  font-size: 0.9rem !important;
+  color: var(--text-light);
+  margin-top: 5px;
+}
+
+.type-chip {
+  background-color: rgba(var(--secondary-purple), 0.2) !important;
+  color: var(--secondary-purple) !important;
+  font-size: 0.75rem !important;
+  margin-left: 8px;
+}
+
+.type-chip.type-exam {
+  background-color: rgba(220, 20, 60, 0.2) !important; /* Crimson */
+  color: #dc143c !important;
+}
+
+.type-chip.type-meeting {
+  background-color: rgba(30, 144, 255, 0.2) !important; /* DodgerBlue */
+  color: #1e90ff !important;
+}
+
+.subject-chip {
+  background-color: rgba(var(--primary-pink), 0.2) !important;
+  color: var(--primary-pink) !important;
+  font-size: 0.75rem !important;
+  margin-left: 8px;
+}
+
+.action-button {
+  color: var(--text-muted) !important;
+}
+
+.action-button:hover {
+  color: var(--primary-pink) !important;
+}
+
+.action-button.delete {
+  color: #dc143c !important; /* Crimson */
+}
+
+.add-edit-dialog-paper {
+  background-color: var(--card-background) !important;
+  color: var(--text-light) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+}
+
+.add-edit-dialog-title {
+  color: var(--primary-pink) !important;
+  font-weight: bold !important;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.add-edit-dialog-content .dialog-text-field .MuiOutlinedInput-root,
+.add-edit-dialog-content .MuiInputBase-root {
+  color: var(--text-light) !important;
+  border-color: var(--border-color) !important;
+}
+
+.add-edit-dialog-content .dialog-text-field .MuiOutlinedInput-notchedOutline,
+.add-edit-dialog-content .MuiInputBase-root .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-color) !important;
+}
+
+.add-edit-dialog-content .dialog-text-field .MuiInputLabel-root,
+.add-edit-dialog-content .MuiInputLabel-root {
+  color: var(--text-muted) !important;
+}
+
+.add-edit-dialog-actions {
+  padding: 20px 24px !important;
+  border-top: 1px solid var(--border-color);
+}
+
+.dialog-cancel-button {
+  color: var(--text-muted) !important;
+}
+
+.dialog-cancel-button:hover {
+  color: var(--primary-pink) !important;
+}
+
+.dialog-save-button {
+  background-color: var(--secondary-purple) !important;
+  color: var(--text-light) !important;
+}
+
+.dialog-save-button:hover {
+  background-color: var(--primary-pink) !important;
+} 

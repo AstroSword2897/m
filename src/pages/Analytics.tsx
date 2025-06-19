@@ -49,7 +49,7 @@ ChartJS.register(
 
 interface StudyData {
   labels: string[];
-  datasets: { label: string; data: number[]; borderColor?: string; backgroundColor?: string; }[];
+  datasets: { label: string; data: number[]; borderColor?: string; backgroundColor?: string | string[]; }[];
 }
 
 interface PerformanceMetric {
@@ -98,7 +98,7 @@ const Analytics: React.FC = () => {
     const mockSubjectDistribution: StudyData = {
       labels: ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'History'],
       datasets: [
-        { data: [30, 25, 20, 15, 10], backgroundColor: ['#4CAF50', '#2196F3', '#FFC107', '#F44336', '#9C27B0'] },
+        { label: 'Study Distribution', data: [30, 25, 20, 15, 10], backgroundColor: ['#4CAF50', '#2196F3', '#FFC107', '#F44336', '#9C27B0'] },
       ],
     };
 

@@ -12,6 +12,7 @@ import Collaborate from './pages/Collaborate'
 import UserProfile from './pages/UserProfile'
 import Analytics from './pages/Analytics'
 import Settings from './pages/Settings'
+import FlashcardStudy from './pages/FlashcardStudy'
 import './App.css'
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/study-materials" element={<StudyMaterials />} />
             <Route path="/practice" element={<Practice />} />
             <Route path="/flashcards" element={<Flashcards />} />
+            <Route path="/flashcards/:setId" element={<FlashcardStudy />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/progress" element={<Progress />} />
             <Route path="/collaborate" element={<Collaborate />} />

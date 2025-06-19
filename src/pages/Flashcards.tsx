@@ -48,44 +48,54 @@ const Flashcards: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedSet, setSelectedSet] = useState<string | null>(null);
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
+  const [newSetTitle, setNewSetTitle] = useState('');
+  const [newSetSubject, setNewSetSubject] = useState('');
+  const [newSetDescription, setNewSetDescription] = useState('');
+  const [feedback, setFeedback] = useState<string | null>(null);
 
   useEffect(() => {
-    // TODO: Fetch flashcard sets from API
-    const mockSets: FlashcardSet[] = [
-      {
-        id: '1',
-        title: 'Calculus Formulas',
-        subject: 'AP Calculus AB',
-        description: 'Essential formulas and theorems',
-        cardCount: 50,
-        lastStudied: '2024-02-15',
-        mastery: 75,
-        isStarred: true
-      },
-      {
-        id: '2',
-        title: 'Physics Equations',
-        subject: 'AP Physics 1',
-        description: 'Key equations and constants',
-        cardCount: 30,
-        lastStudied: '2024-02-14',
-        mastery: 60,
-        isStarred: false
-      },
-      {
-        id: '3',
-        title: 'Chemistry Elements',
-        subject: 'AP Chemistry',
-        description: 'Periodic table and properties',
-        cardCount: 118,
-        lastStudied: '2024-02-13',
-        mastery: 90,
-        isStarred: true
-      }
-    ];
-    setSets(mockSets);
+    // Load generated flashcards from localStorage
+    const savedFlashcards = localStorage.getItem('studyflow_flashcards');
+    if (savedFlashcards) {
+      setSets(JSON.parse(savedFlashcards));
+    } else {
+      // Fallback to mock data if no generated data exists
+      const mockSets: FlashcardSet[] = [
+        {
+          id: '1',
+          title: 'AP Biology - Cell Structure',
+          subject: 'AP Biology',
+          description: 'Learn about cell organelles and their functions',
+          cardCount: 15,
+          lastStudied: '2024-02-15',
+          mastery: 75,
+          isStarred: false
+        },
+        {
+          id: '2',
+          title: 'AP Calculus - Derivatives',
+          subject: 'AP Calculus AB',
+          description: 'Master derivative rules and applications',
+          cardCount: 20,
+          lastStudied: '2024-02-14',
+          mastery: 60,
+          isStarred: true
+        },
+        {
+          id: '3',
+          title: 'AP Chemistry - Chemical Reactions',
+          subject: 'AP Chemistry',
+          description: 'Understand reaction types and balancing equations',
+          cardCount: 18,
+          lastStudied: '2024-02-13',
+          mastery: 45,
+          isStarred: false
+        }
+      ];
+      setSets(mockSets);
+    }
     setLoading(false);
-  }, []);
+  }, [selectedSubject]);
 
   const filteredSets = sets.filter(set => {
     const matchesSearch = set.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -112,6 +122,44 @@ const Flashcards: React.FC = () => {
     setCreateDialogOpen(false);
   };
 
+  const handleCreateSet = () => {
+    if (!newSetTitle.trim() || !newSetSubject.trim()) {
+      setFeedback('Please enter a title and subject!');
+      return;
+    }
+    const newSet: FlashcardSet = {
+      id: (Math.random() * 100000).toFixed(0),
+      title: newSetTitle,
+      subject: newSetSubject,
+      description: newSetDescription,
+      cardCount: 0,
+      lastStudied: new Date().toISOString(),
+      mastery: 0,
+      isStarred: false
+    };
+    setSets(prev => [newSet, ...prev]);
+    setCreateDialogOpen(false);
+    setNewSetTitle('');
+    setNewSetSubject('');
+    setNewSetDescription('');
+    setFeedback('Set created! 🎉');
+    setTimeout(() => setFeedback(null), 2000);
+  };
+
+  const handleToggleStar = (id: string) => {
+    setSets(prev => prev.map(set => set.id === id ? { ...set, isStarred: !set.isStarred } : set));
+  };
+
+  const handleDeleteSet = () => {
+    if (selectedSet) {
+      setSets(prev => prev.filter(set => set.id !== selectedSet));
+      setFeedback('Set deleted.');
+      setTimeout(() => setFeedback(null), 2000);
+    }
+    setAnchorEl(null);
+    setSelectedSet(null);
+  };
+
   if (loading) {
     return (
       <Box className="loading-container">
@@ -122,17 +170,36 @@ const Flashcards: React.FC = () => {
 
   return (
     <div className="flashcards-page">
+      {feedback && <div className="flashcards-feedback">{feedback}</div>}
       <div className="flashcards-header">
         <Typography variant="h4" component="h1">
-          Flashcard Sets
+          🧠 Smart Spaced Repetition
         </Typography>
+        <div className="spaced-rep-banner">
+          <span role="img" aria-label="alarm">⏰</span> Never forget what you learn! <b>StudyFlow</b> schedules reviews right before you're about to forget — for max retention and less stress.
+        </div>
         <Button
           variant="contained"
           startIcon={<AddIcon />}
+          className="create-set-btn"
           onClick={handleCreateDialogOpen}
         >
-          Create Set
+          ✨ Start a New Set!
         </Button>
+      </div>
+
+      <div className="why-spaced-rep-card">
+        <h3>Why Spaced Repetition?</h3>
+        <p>
+          Your brain learns best with smart, spaced reviews—not cramming! StudyFlow reminds you to review cards just before you're about to forget them. That means less time studying, more knowledge remembered. <span role="img" aria-label="brain">🧠</span>
+        </p>
+      </div>
+
+      <div className="streaks-badges-card">
+        <h3>🔥 Streaks & Badges <span className="coming-soon">(Coming Soon!)</span></h3>
+        <p>
+          Keep your study streak alive and earn badges for milestones like "3-day streak" or "Mastered 100 cards!" Motivation, unlocked. <span role="img" aria-label="trophy">🏆</span>
+        </p>
       </div>
 
       <div className="flashcards-filters">
@@ -187,6 +254,8 @@ const Flashcards: React.FC = () => {
                     <IconButton
                       size="small"
                       color={set.isStarred ? 'primary' : 'default'}
+                      onClick={() => handleToggleStar(set.id)}
+                      aria-label={set.isStarred ? 'Unstar' : 'Star'}
                     >
                       <StarIcon />
                     </IconButton>
@@ -245,7 +314,7 @@ const Flashcards: React.FC = () => {
       >
         <MenuItem onClick={handleMenuClose}>Edit</MenuItem>
         <MenuItem onClick={handleMenuClose}>Share</MenuItem>
-        <MenuItem onClick={handleMenuClose}>Delete</MenuItem>
+        <MenuItem onClick={handleDeleteSet}>Delete</MenuItem>
       </Menu>
 
       <Dialog
@@ -261,12 +330,16 @@ const Flashcards: React.FC = () => {
             label="Title"
             margin="normal"
             variant="outlined"
+            value={newSetTitle}
+            onChange={e => setNewSetTitle(e.target.value)}
           />
           <TextField
             fullWidth
             label="Subject"
             margin="normal"
             variant="outlined"
+            value={newSetSubject}
+            onChange={e => setNewSetSubject(e.target.value)}
           />
           <TextField
             fullWidth
@@ -275,11 +348,13 @@ const Flashcards: React.FC = () => {
             variant="outlined"
             multiline
             rows={4}
+            value={newSetDescription}
+            onChange={e => setNewSetDescription(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCreateDialogClose}>Cancel</Button>
-          <Button variant="contained" onClick={handleCreateDialogClose}>
+          <Button variant="contained" onClick={handleCreateSet}>
             Create
           </Button>
         </DialogActions>

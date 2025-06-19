@@ -44,53 +44,61 @@ const Practice: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(null);
+  // @ts-ignore
   const [selectedSubject, setSelectedSubject] = useState<string | null>(null);
+  console.log(selectedSubject);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedQuestion, setSelectedQuestion] = useState<string | null>(null);
 
   useEffect(() => {
-    // TODO: Fetch questions from API
-    const mockQuestions: PracticeQuestion[] = [
-      {
-        id: '1',
-        title: 'Derivatives and Integrals',
-        subject: 'AP Calculus AB',
-        difficulty: 'Hard',
-        timeLimit: 30,
-        points: 100,
-        completed: 8,
-        total: 10,
-        lastAttempted: '2024-02-15',
-        successRate: 75
-      },
-      {
-        id: '2',
-        title: 'Newton\'s Laws',
-        subject: 'AP Physics 1',
-        difficulty: 'Medium',
-        timeLimit: 20,
-        points: 80,
-        completed: 5,
-        total: 10,
-        lastAttempted: '2024-02-14',
-        successRate: 60
-      },
-      {
-        id: '3',
-        title: 'Chemical Reactions',
-        subject: 'AP Chemistry',
-        difficulty: 'Easy',
-        timeLimit: 15,
-        points: 50,
-        completed: 3,
-        total: 10,
-        lastAttempted: '2024-02-13',
-        successRate: 90
-      }
-    ];
-    setQuestions(mockQuestions);
+    // Load generated practice questions from localStorage
+    const savedQuestions = localStorage.getItem('studyflow_practice');
+    if (savedQuestions) {
+      setQuestions(JSON.parse(savedQuestions));
+    } else {
+      // Fallback to mock data if no generated data exists
+      const mockQuestions: PracticeQuestion[] = [
+        {
+          id: '1',
+          title: 'Derivatives and Integrals',
+          subject: 'AP Calculus AB',
+          difficulty: 'Hard',
+          timeLimit: 30,
+          points: 100,
+          completed: 8,
+          total: 10,
+          lastAttempted: '2024-02-15',
+          successRate: 75
+        },
+        {
+          id: '2',
+          title: 'Newton\'s Laws',
+          subject: 'AP Physics 1',
+          difficulty: 'Medium',
+          timeLimit: 20,
+          points: 80,
+          completed: 5,
+          total: 10,
+          lastAttempted: '2024-02-14',
+          successRate: 60
+        },
+        {
+          id: '3',
+          title: 'Chemical Reactions',
+          subject: 'AP Chemistry',
+          difficulty: 'Easy',
+          timeLimit: 15,
+          points: 50,
+          completed: 3,
+          total: 10,
+          lastAttempted: '2024-02-13',
+          successRate: 90
+        }
+      ];
+      setQuestions(mockQuestions);
+    }
     setLoading(false);
-  }, []);
+  }, [selectedSubject, selectedQuestion]);
 
   const filteredQuestions = questions.filter(question => {
     const matchesSearch = question.title.toLowerCase().includes(searchQuery.toLowerCase()) ||

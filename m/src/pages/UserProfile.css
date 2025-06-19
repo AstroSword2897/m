@@ -1,0 +1,144 @@
+.user-profile-page {
+  padding: 40px 20px;
+}
+
+.profile-container {
+  background-color: var(--card-background) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 15px !important;
+  padding: 30px !important;
+  color: var(--text-light) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.profile-avatar {
+  background-color: var(--primary-pink) !important;
+  margin-bottom: 15px !important;
+}
+
+.user-name {
+  font-size: 2.5rem !important;
+  font-weight: bold;
+  color: var(--primary-pink);
+  margin-bottom: 5px !important;
+}
+
+.user-email {
+  font-size: 1rem !important;
+  color: var(--text-muted) !important;
+  margin-bottom: 20px !important;
+}
+
+.edit-save-button,
+.cancel-button {
+  background-color: var(--secondary-purple) !important;
+  color: var(--text-light) !important;
+  padding: 10px 20px !important;
+  font-size: 1rem !important;
+  border-radius: 8px !important;
+  transition: background-color 0.3s ease;
+}
+
+.edit-save-button:hover,
+.cancel-button:hover {
+  background-color: var(--primary-pink) !important;
+}
+
+.cancel-button {
+  background-color: transparent !important;
+  border: 1px solid var(--text-muted) !important;
+  color: var(--text-muted) !important;
+}
+
+.cancel-button:hover {
+  background-color: rgba(var(--text-muted), 0.1) !important;
+}
+
+.profile-section {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(var(--border-color), 0.5);
+}
+
+.profile-section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.section-title {
+  font-size: 1.8rem !important;
+  font-weight: bold;
+  color: var(--primary-pink);
+  margin-bottom: 15px !important;
+}
+
+.profile-bio {
+  font-size: 1rem !important;
+  color: var(--text-light) !important;
+  line-height: 1.6;
+}
+
+.profile-text-field .MuiOutlinedInput-root {
+  color: var(--text-light) !important;
+  border-color: var(--border-color) !important;
+}
+
+.profile-text-field .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-color) !important;
+}
+
+.profile-text-field .MuiInputLabel-root {
+  color: var(--text-muted) !important;
+}
+
+.profile-details-grid {
+  margin-top: 30px;
+}
+
+.profile-list-item {
+  border-bottom: 1px solid rgba(var(--border-color), 0.3) !important;
+  padding: 10px 0 !important;
+}
+
+.profile-list-item:last-child {
+  border-bottom: none !important;
+}
+
+.profile-list-item .MuiListItemText-primary {
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+.profile-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.profile-chip {
+  background-color: rgba(var(--secondary-purple), 0.2) !important;
+  color: var(--secondary-purple) !important;
+  font-size: 0.9rem !important;
+}
+
+.stat-value {
+  font-size: 1.1rem !important;
+  font-weight: bold;
+  color: var(--primary-pink) !important;
+}
+
+.no-items-message {
+  color: var(--text-muted) !important;
+  font-style: italic;
+  margin-top: 10px;
+} 

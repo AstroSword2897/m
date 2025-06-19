@@ -92,7 +92,7 @@ const Progress: React.FC = () => {
     ];
     setProgress(mockProgress);
     setLoading(false);
-  }, []);
+  }, [selectedProgress]);
 
   const filteredProgress = progress.filter(item => {
     const matchesSearch = item.subject.toLowerCase().includes(searchQuery.toLowerCase());
@@ -141,7 +141,7 @@ const Progress: React.FC = () => {
           <InputLabel>Time Range</InputLabel>
           <Select
             value={timeRange}
-            onChange={(e: SelectChangeEvent) => setTimeRange(e.target.value)}
+            onChange={(e: SelectChangeEvent<string>) => setTimeRange(e.target.value)}
             label="Time Range"
           >
             <SelectMenuItem value="week">This Week</SelectMenuItem>

@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Grid,
-  Card,
-  CardContent,
   Typography,
+  Box,
   Button,
   TextField,
   InputAdornment,
+  Grid,
+  Card,
+  CardContent,
   Chip,
-  Box,
-  CircularProgress,
-  Tabs,
-  Tab,
   IconButton,
   Menu,
-  MenuItem
+  MenuItem,
+  CircularProgress,
 } from '@mui/material';
 import {
   Search as SearchIcon,
@@ -25,18 +23,18 @@ import {
   VideoLibrary as VideoIcon,
   Description as DocumentIcon
 } from '@mui/icons-material';
+import NoteEditor from '../components/NoteEditor';
+import axios from 'axios';
 import './StudyMaterials.css';
 
 interface StudyMaterial {
   id: string;
   title: string;
-  description: string;
-  type: 'Book' | 'Video' | 'Document';
-  subject: string;
+  content: string;
+  type: 'Book' | 'Video' | 'Document' | 'Note';
+  subject?: string;
   createdAt: string;
-  author: string;
-  rating: number;
-  views: number;
+  updatedAt?: string;
 }
 
 const StudyMaterials: React.FC = () => {
@@ -47,51 +45,59 @@ const StudyMaterials: React.FC = () => {
   const [selectedSubject, setSelectedSubject] = useState<string | null>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedMaterial, setSelectedMaterial] = useState<string | null>(null);
+  const [isNoteEditorOpen, setIsNoteEditorOpen] = useState(false);
 
   useEffect(() => {
-    // TODO: Fetch materials from API
-    const mockMaterials: StudyMaterial[] = [
-      {
-        id: '1',
-        title: 'Calculus Fundamentals',
-        description: 'Comprehensive guide to calculus basics',
-        type: 'Book',
-        subject: 'AP Calculus AB',
-        createdAt: '2024-02-15',
-        author: 'Dr. Smith',
-        rating: 4.5,
-        views: 1200
-      },
-      {
-        id: '2',
-        title: 'Physics Problem Solving',
-        description: 'Video series on solving complex physics problems',
-        type: 'Video',
-        subject: 'AP Physics 1',
-        createdAt: '2024-02-10',
-        author: 'Prof. Johnson',
-        rating: 4.8,
-        views: 2500
-      },
-      {
-        id: '3',
-        title: 'Chemistry Lab Guide',
-        description: 'Detailed lab procedures and safety guidelines',
-        type: 'Document',
-        subject: 'AP Chemistry',
-        createdAt: '2024-02-05',
-        author: 'Dr. Brown',
-        rating: 4.2,
-        views: 800
+    const fetchNotes = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get('http://localhost:3000/api/notes');
+        const apiMaterials = response.data.map((note: any) => ({
+          id: note.id,
+          title: note.title,
+          content: note.content,
+          type: 'Note',
+          subject: note.subject || 'General',
+          createdAt: new Date(note.createdAt).toISOString().split('T')[0],
+          updatedAt: note.updatedAt ? new Date(note.updatedAt).toISOString().split('T')[0] : undefined,
+        }));
+
+        // Load generated study materials from localStorage
+        const savedMaterials = localStorage.getItem('studyflow_materials');
+        let generatedMaterials: StudyMaterial[] = [];
+        if (savedMaterials) {
+          generatedMaterials = JSON.parse(savedMaterials).map((material: any) => ({
+            ...material,
+            createdAt: new Date(material.createdAt).toISOString().split('T')[0],
+            updatedAt: material.updatedAt ? new Date(material.updatedAt).toISOString().split('T')[0] : undefined,
+          }));
+        }
+
+        // Combine API materials and generated materials
+        setMaterials([...generatedMaterials, ...apiMaterials]);
+      } catch (error) {
+        console.error('Error fetching notes:', error);
+        // If API fails, still load generated materials
+        const savedMaterials = localStorage.getItem('studyflow_materials');
+        if (savedMaterials) {
+          const generatedMaterials = JSON.parse(savedMaterials).map((material: any) => ({
+            ...material,
+            createdAt: new Date(material.createdAt).toISOString().split('T')[0],
+            updatedAt: material.updatedAt ? new Date(material.updatedAt).toISOString().split('T')[0] : undefined,
+          }));
+          setMaterials(generatedMaterials);
+        }
+      } finally {
+        setLoading(false);
       }
-    ];
-    setMaterials(mockMaterials);
-    setLoading(false);
-  }, []);
+    };
+
+    fetchNotes();
+  }, []); // Empty dependency array to fetch only once on mount
 
   const filteredMaterials = materials.filter(material => {
     const matchesSearch = material.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         material.description.toLowerCase().includes(searchQuery.toLowerCase());
+                         material.content.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesType = !selectedType || material.type === selectedType;
     const matchesSubject = !selectedSubject || material.subject === selectedSubject;
     return matchesSearch && matchesType && matchesSubject;
@@ -105,8 +111,10 @@ const StudyMaterials: React.FC = () => {
         return <VideoIcon />;
       case 'Document':
         return <DocumentIcon />;
+      case 'Note':
+        return <DocumentIcon />;
       default:
-        return null;
+        return <BookIcon />;
     }
   };
 
@@ -118,6 +126,31 @@ const StudyMaterials: React.FC = () => {
   const handleMenuClose = () => {
     setAnchorEl(null);
     setSelectedMaterial(null);
+  };
+
+  const handleSaveNote = async (content: string) => {
+    try {
+      const newNote = {
+        title: `Note from ${new Date().toLocaleString()}`,
+        content: content,
+        subject: 'General', // Default subject for now
+      };
+      const response = await axios.post('http://localhost:3000/api/notes', newNote);
+      const savedNote: StudyMaterial = {
+        id: response.data.id,
+        title: response.data.title,
+        content: response.data.content,
+        type: 'Note',
+        subject: response.data.subject || 'General',
+        createdAt: new Date(response.data.createdAt).toISOString().split('T')[0],
+        updatedAt: response.data.updatedAt ? new Date(response.data.updatedAt).toISOString().split('T')[0] : undefined,
+      };
+      setMaterials(prevMaterials => [...prevMaterials, savedNote]);
+      setIsNoteEditorOpen(false); // Close the editor after saving
+    } catch (error) {
+      console.error('Error saving note:', error);
+      // Handle error, e.g., show an error message to the user
+    }
   };
 
   if (loading) {
@@ -137,12 +170,23 @@ const StudyMaterials: React.FC = () => {
         <Button
           variant="contained"
           startIcon={<AddIcon />}
-          component={Link}
-          to="/materials/new"
+          onClick={() => setIsNoteEditorOpen(true)}
         >
-          Add Material
+          Add New Note
         </Button>
       </div>
+
+      {isNoteEditorOpen && (
+        <Box sx={{ my: 4 }}>
+          <Typography variant="h5" component="h2" gutterBottom>
+            Create New Note
+          </Typography>
+          <NoteEditor onSave={handleSaveNote} />
+          <Button onClick={() => setIsNoteEditorOpen(false)} variant="outlined" sx={{ mt: 2 }}>
+            Cancel
+          </Button>
+        </Box>
+      )}
 
       <div className="materials-filters">
         <TextField
@@ -160,7 +204,7 @@ const StudyMaterials: React.FC = () => {
           }}
         />
         <div className="filter-chips">
-          {['Book', 'Video', 'Document'].map((type) => (
+          {['Book', 'Video', 'Document', 'Note'].map((type) => (
             <Chip
               key={type}
               icon={getTypeIcon(type)}
@@ -200,14 +244,14 @@ const StudyMaterials: React.FC = () => {
                   {material.title}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" className="material-description">
-                  {material.description}
+                  {material.content}
                 </Typography>
                 <div className="material-meta">
                   <Typography variant="caption" color="textSecondary">
                     Subject: {material.subject}
                   </Typography>
                   <Typography variant="caption" color="textSecondary">
-                    Author: {material.author}
+                    Created: {new Date(material.createdAt).toLocaleDateString()}
                   </Typography>
                 </div>
                 <div className="material-stats">
@@ -216,7 +260,7 @@ const StudyMaterials: React.FC = () => {
                       Rating
                     </Typography>
                     <Typography variant="h6">
-                      {material.rating}/5
+                      {/* Rating component would be populated here */}
                     </Typography>
                   </div>
                   <div className="stat">
@@ -224,7 +268,7 @@ const StudyMaterials: React.FC = () => {
                       Views
                     </Typography>
                     <Typography variant="h6">
-                      {material.views}
+                      {/* Views component would be populated here */}
                     </Typography>
                   </div>
                 </div>

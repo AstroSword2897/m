@@ -10,16 +10,26 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.4",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.12",
     "@mui/material": "^5.15.12",
+    "@mui/x-date-pickers": "^8.5.2",
+    "@types/vis": "^4.21.27",
+    "@uiw/react-codemirror": "^4.23.13",
     "chart.js": "^4.4.2",
     "date-fns": "^3.3.1",
+    "dayjs": "^1.11.13",
+    "mathjs": "^14.5.2",
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "^6.22.3"
+    "react-quill": "^2.0.0",
+    "react-router-dom": "^6.22.3",
+    "reactflow": "^11.11.4",
+    "recharts": "^2.15.3",
+    "vis-data": "^7.1.9"
   },
   "devDependencies": {
     "@types/react": "18.2.64",

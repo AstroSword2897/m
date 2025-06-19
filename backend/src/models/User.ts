@@ -1,53 +1,39 @@
-import mongoose, { Document, Schema } from 'mongoose';
-import bcrypt from 'bcryptjs';
+import pool from '../utils/db'
+import bcrypt from 'bcryptjs'
 
-export interface IUser extends Document {
+export interface IUser {
+  id?: string;
   email: string;
   password: string;
   name: string;
-  createdAt: Date;
-  updatedAt: Date;
-  comparePassword(candidatePassword: string): Promise<boolean>;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
-const userSchema = new Schema<IUser>({
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
-    lowercase: true
-  },
-  password: {
-    type: String,
-    required: true,
-    minlength: 6
-  },
-  name: {
-    type: String,
-    required: true,
-    trim: true
-  }
-}, {
-  timestamps: true
-});
-
-// Hash password before saving
-userSchema.pre('save', async function(next) {
-  if (!this.isModified('password')) return next();
-  
-  try {
+export class UserModel {
+  static async createUser(user: IUser): Promise<IUser> {
+    const { email, password, name } = user;
     const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
-    next();
-  } catch (error) {
-    next(error as Error);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const result = await pool.query(
+      'INSERT INTO users (email, password, name) VALUES ($1, $2, $3) RETURNING id, email, name, "createdAt", "updatedAt";',
+      [email, hashedPassword, name]
+    );
+    return result.rows[0];
   }
-});
 
-// Method to compare password
-userSchema.methods.comparePassword = async function(candidatePassword: string): Promise<boolean> {
-  return bcrypt.compare(candidatePassword, this.password);
-};
+  static async findByEmail(email: string): Promise<IUser | null> {
+    const result = await pool.query('SELECT id, email, password, name, "createdAt", "updatedAt" FROM users WHERE email = $1;', [email]);
+    return result.rows[0] || null;
+  }
 
-export const User = mongoose.model<IUser>('User', userSchema); 
+  static async findById(id: string): Promise<IUser | null> {
+    const result = await pool.query('SELECT id, email, name, "createdAt", "updatedAt" FROM users WHERE id = $1;', [id]);
+    return result.rows[0] || null;
+  }
+
+  static async comparePassword(candidatePassword: string, hashedPasswordFromDb: string): Promise<boolean> {
+    return bcrypt.compare(candidatePassword, hashedPasswordFromDb);
+  }
+} 

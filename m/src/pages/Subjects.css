@@ -1,0 +1,109 @@
+.subjects-page {
+  padding: 40px 20px;
+}
+
+.subjects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.page-title {
+  font-size: 2.5rem !important;
+  color: var(--primary-pink);
+  font-weight: bold;
+}
+
+.add-subject-button {
+  background-color: var(--secondary-purple) !important;
+  color: var(--text-light) !important;
+  padding: 10px 20px !important;
+  font-size: 1rem !important;
+  border-radius: 8px !important;
+  transition: background-color 0.3s ease;
+}
+
+.add-subject-button:hover {
+  background-color: var(--primary-pink) !important;
+}
+
+.subject-card {
+  background-color: var(--card-background) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  color: var(--text-light) !important;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.subject-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+.subject-title {
+  font-size: 1.6rem !important;
+  font-weight: bold;
+  margin-bottom: 10px !important;
+  color: var(--primary-pink);
+}
+
+.subject-description {
+  font-size: 0.95rem !important;
+  color: var(--text-muted) !important;
+  margin-bottom: 15px !important;
+  flex-grow: 1;
+}
+
+.subject-progress {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  background-color: var(--background-dark);
+  border-radius: 5px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--secondary-purple);
+  border-radius: 5px;
+}
+
+.subject-topics {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.topic-chip {
+  background-color: rgba(var(--primary-pink), 0.2) !important;
+  color: var(--primary-pink) !important;
+  font-size: 0.8rem !important;
+}
+
+.view-subject-button {
+  color: var(--primary-pink) !important;
+  border-color: var(--primary-pink) !important;
+  padding: 8px 15px !important;
+  font-size: 0.9rem !important;
+  border-radius: 8px !important;
+  margin-top: auto;
+}
+
+.view-subject-button:hover {
+  background-color: rgba(var(--primary-pink), 0.1) !important;
+} 

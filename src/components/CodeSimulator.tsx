@@ -36,7 +36,7 @@ const CodeSimulator: React.FC = () => {
           value={code}
           height="200px"
           extensions={[javascript({ jsx: true })]}
-          onChange={(value) => setCode(value)}
+          onChange={(value: string) => setCode(value)}
         />
       </div>
       <button onClick={runCode} className="run-code-button">Run Code</button>
