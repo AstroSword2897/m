@@ -1,120 +1,155 @@
-# 📚 StudyFlow — Smarter Study, Less Stress
+# StudyFlow - Your Personal AI-Powered Study Companion
 
-Tired of cramming and forgetting everything the next day?
-**StudyFlow** is your intelligent study companion, built for students and lifelong learners who want to remember more — and stress less.
+StudyFlow is a modern, AI-powered study application designed to help you master any subject. Upload your study materials, and StudyFlow will automatically generate flashcards, practice questions, and more. Track your progress, collaborate with friends, and customize your study experience to fit your learning style.
 
-**Latest Updates:**
-- **Modern, student-friendly UI** with a clean dashboard and no more empty space.
-- **Always shows helpful mock data** if setup is incomplete, so you never see a blank screen.
-- **Reset button** lets you restart your study setup at any time.
-- **All code cleaned up:** No more warnings or errors in the dashboard.
+## Features
 
-Powered by spaced repetition, progress tracking, and (coming soon) AI-driven reviews, StudyFlow goes way beyond flashcards. It's a full learning workflow — from notes to quizzes to visual analytics — all in one place.
+- **AI-Powered Content Generation**: Upload PDF, TXT, or DOCX files, and StudyFlow will automatically create flashcards and practice quizzes based on the content.
+- **Interactive Flashcards**: Create, edit, and study flashcards with a sleek, interactive interface.
+- **Practice Quizzes**: Test your knowledge with multiple-choice quizzes generated from your study materials.
+- **Progress Tracking**: Visualize your study sessions and track your performance over time with detailed analytics and charts.
+- **Dynamic Scheduling**: Plan your study sessions with a fully interactive calendar.
+- **Collaborative Study Groups**: Create or join study groups to chat and share materials with your peers.
+- **Customizable Settings**: Tailor the application to your needs with customizable themes and data management options.
+- **Large File Support**: Upload and process files up to 1GB, with chunked uploading and progress tracking.
 
----
+## Tech Stack
 
-## ✨ Core Features
+### Frontend
 
-### 🧠 Smart Spaced Repetition
-Never forget what you learned. StudyFlow schedules reviews right before you're about to forget — for maximum retention.
+- **Angular 18**: A powerful framework for building dynamic single-page applications.
+- **TypeScript**: For robust, type-safe code.
+- **SCSS**: For advanced and maintainable styling.
+- **LocalStorage**: To persist data and provide an offline-first experience.
 
-### 📝 Notes That Drive Learning
-Create, organize, and link your notes directly to flashcards, quizzes, and more. Learning starts from your own content.
+### Backend
 
-### 📊 Visual Progress & Mastery Tracking
-Heatmaps, trends, and personalized stats that help you see your progress and study smarter.
+- **Node.js & Express**: For a fast and scalable server.
+- **TypeScript**: For type safety and consistency with the frontend.
+- **PostgreSQL**: A powerful, open-source relational database.
+- **Multer**: For handling file uploads efficiently.
+- **JSON Web Tokens (JWT)**: For secure user authentication.
 
-### ⏱️ Schedule + Focus Tools
-Built-in planner, Pomodoro timer, and smart reminders to keep you on track without burnout.
+## Getting Started
 
-### 🤝 Collaborative Study Sessions
-Share notes, co-create flashcards, and host group reviews. Perfect for study groups and class projects.
-
-### 🔍 AI Assist (Coming Soon)
-Auto-generate quiz questions, simplify complex notes, and get personalized prompts based on what you need most.
-
-### 🧩 Gamification Layer (Optional)
-Earn streaks, track milestones, and stay motivated with achievement badges.
-
----
-
-## 🚀 Tech Stack
-- **Frontend:** React + TypeScript + Vite
-- **Backend:** Node.js + Express
-- **Database:** PostgreSQL (pg library)
-- **Styling:** Custom CSS with themes
-
----
-
-## ⚙️ Setup Guide
+Follow these instructions to get the project up and running on your local machine.
 
 ### Prerequisites
-- Node.js (v18+)
-- npm
-- PostgreSQL (running locally or remotely)
 
-### .env Configuration
-```
-DB_USER=your_pg_user
-DB_HOST=localhost
-DB_NAME=your_database_name
-DB_PASSWORD=your_pg_password
-DB_PORT=5433
-PORT=3000
-FRONTEND_URL=http://localhost:5173
-```
+- **Node.js**: Version `20.19.0` or higher. We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage Node.js versions.
+- **PostgreSQL**: A running PostgreSQL server. We recommend [Postgres.app](https://postgresapp.com/) for macOS users.
+- **Angular CLI**: `npm install -g @angular/cli`
 
-### Installation
+### 1. Clone the Repository
+
 ```bash
-git clone https://github.com/yourusername/studyflow.git
+git clone <your-repo-url>
 cd studyflow
-npm install
-cd backend && npm install
 ```
 
-### Run Locally
+### 2. Install Node.js Version
+
+If you have `nvm`, run the following command to install and use the correct Node.js version:
+
 ```bash
-# Start backend
+nvm install
+nvm use
+```
+
+### 3. Install Dependencies
+
+Install the necessary packages for both the frontend and backend.
+
+```bash
+# Install frontend dependencies
+npm install
+
+# Install backend dependencies
 cd backend
-npm start
-
-# In another terminal
+npm install
 cd ..
-npm run dev
 ```
 
----
+### 4. Set Up the Database
 
-## 🛠 Auto-Migration Info
-⚠️ The backend has migrated from MongoDB to PostgreSQL.
-On startup, it will auto-create essential tables: users, notes, study_materials, and more.
+1.  **Start PostgreSQL**: If you're using Postgres.app, open the application and click "Start".
+2.  **Create the Database**: Run the following command in your terminal:
+    ```bash
+    createdb studyflow_db
+    ```
 
----
+### 5. Configure Environment Variables
 
-## 🗂 Project Structure
+1.  Navigate to the `backend` directory.
+2.  Create a new file named `.env`.
+3.  Copy the following content into the `.env` file and replace the placeholders with your own PostgreSQL credentials. Your `DB_USER` is typically your system username.
+
+    ```env
+    DB_USER=your_postgres_user
+    DB_HOST=localhost
+    DB_NAME=studyflow_db
+    DB_PASSWORD=your_postgres_password
+    DB_PORT=5432
+    JWT_SECRET=this_is_a_super_secret_key_for_jwt
+    FRONTEND_URL=http://localhost:4204
+    ```
+
+### 6. Run the Application
+
+You'll need to run both the backend and frontend servers simultaneously.
+
+- **Start the Backend Server** (from the root directory):
+  ```bash
+  cd backend
+  npm run dev
+  ```
+
+- **Start the Frontend Server** (from the root directory, in a separate terminal):
+  ```bash
+  ng serve
+  ```
+
+The application will be available at http://localhost:4204.
+
+## Pushing Changes to GitHub
+
+Once you've made your changes, you can commit and push them to your repository.
+
+```bash
+# Stage all changes
+git add .
+
+# Commit your changes with a message
+git commit -m "feat: Full-stack setup with database and file uploads"
+
+# Push to your main branch
+git push origin main
 ```
-studyflow/
-├── backend/         # Node/Express API
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   └── ...
-├── src/             # React frontend
+
+## Project Structure
+
+```
+src/
+├── app/
 │   ├── components/
+│   │   └── navigation/
 │   ├── pages/
-│   └── ...
-├── public/
-└── .env.example
+│   │   ├── dashboard/
+│   │   ├── flashcards/
+│   │   ├── practice/
+│   │   ├── progress/
+│   │   ├── schedule/
+│   │   ├── collaborate/
+│   │   └── settings/
+│   ├── app.component.ts
+│   ├── app.config.ts
+│   └── app.routes.ts
+├── assets/
+├── index.html
+├── main.ts
+└── styles.scss
 ```
 
----
+## Contributing
 
-## ❓ Troubleshooting
-- **Port conflicts?** Change in `.env`.
-- **Database errors?** Double-check credentials & DB status.
-- **No table?** The backend will auto-create them at startup.
-
----
-
-## 🧠 Built for Learners
-StudyFlow isn't just a tool — it's your personal academic command center. Whether you're prepping for finals, organizing your semester, or just trying to finally remember what you study, we've got your back.
+This is a prototype version. More features coming soon! 

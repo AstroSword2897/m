@@ -9,6 +9,7 @@ import { notFoundHandler } from './middleware/notFoundHandler';
 import userRoutes from './routes/userRoutes';
 import studyRoutes from './routes/studyRoutes';
 import noteRoutes from './routes/noteRoutes';
+import uploadRoutes from './routes/uploadRoutes';
 import { logger } from './utils/logger';
 import pool from './utils/db';
 
@@ -35,13 +36,14 @@ app.use(limiter);
 app.use(morgan('combined', { stream: { write: message => logger.info(message.trim()) } }));
 
 // Body parsing
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // Routes
 app.use('/api/users', userRoutes);
 app.use('/api/study', studyRoutes);
 app.use('/api/notes', noteRoutes);
+app.use('/api', uploadRoutes);
 
 // Health check endpoint
 app.get('/health', (req: Request, res: Response) => {

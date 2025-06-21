@@ -1,72 +1,77 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { User } from '../models/User';
+import { IUser, UserModel } from '../models/User';
 
-export const register = async (req: Request, res: Response) => {
+export const registerUser = async (req: Request, res: Response) => {
   try {
     const { email, password, name } = req.body;
 
-    // Check if user already exists
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
+    if (!email || !password || !name) {
+      return res.status(400).json({ message: 'Please enter all fields' });
+    }
+
+    const userExists = await UserModel.findByEmail(email);
+    if (userExists) {
       return res.status(400).json({ error: 'Email already registered' });
     }
 
-    // Create new user
-    const user = new User({
-      email,
-      password,
-      name
-    });
+    const newUser: IUser = { email, password, name };
+    const createdUser = await UserModel.createUser(newUser);
 
-    await user.save();
-
-    // Generate token
-    const token = jwt.sign(
-      { _id: user._id },
-      process.env.JWT_SECRET || 'your_jwt_secret_key_here',
-      { expiresIn: '7d' }
-    );
-
-    res.status(201).json({ user, token });
+    if (createdUser && createdUser.id) {
+      const token = jwt.sign(
+        { id: createdUser.id },
+        process.env.JWT_SECRET || 'your_jwt_secret_key_here',
+        { expiresIn: '7d' }
+      );
+      res.status(201).json({ user: createdUser, token });
+    } else {
+      res.status(400).json({ message: 'Invalid user data' });
+    }
   } catch (error) {
     res.status(400).json({ error: 'Error creating user' });
   }
 };
 
-export const login = async (req: Request, res: Response) => {
+export const loginUser = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
 
-    // Find user
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Please enter all fields' });
     }
 
-    // Check password
-    const isMatch = await user.comparePassword(password);
-    if (!isMatch) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+    const user = await UserModel.findByEmail(email);
+
+    if (user && (await UserModel.comparePassword(password, user.password))) {
+      const token = jwt.sign(
+        { id: user.id },
+        process.env.JWT_SECRET || 'your_jwt_secret_key_here',
+        { expiresIn: '7d' }
+      );
+      res.json({ user, token });
+    } else {
+      res.status(400).json({ message: 'Invalid credentials' });
     }
-
-    // Generate token
-    const token = jwt.sign(
-      { _id: user._id },
-      process.env.JWT_SECRET || 'your_jwt_secret_key_here',
-      { expiresIn: '7d' }
-    );
-
-    res.json({ user, token });
   } catch (error) {
     res.status(400).json({ error: 'Error logging in' });
   }
 };
 
-export const getProfile = async (req: Request, res: Response) => {
+export const getUserProfile = async (req: Request, res: Response) => {
   try {
-    const user = await User.findById((req as any).user._id).select('-password');
-    res.json(user);
+    if (req.user) {
+      const user = await UserModel.findById(req.user.id);
+      if (user) {
+        res.json({
+          name: user.name,
+        });
+      } else {
+        res.status(404).json({ message: 'User not found' });
+      }
+    } else {
+      res.status(401).json({ message: 'Not authorized' });
+    }
   } catch (error) {
     res.status(400).json({ error: 'Error fetching profile' });
   }
