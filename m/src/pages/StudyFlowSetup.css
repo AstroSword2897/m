@@ -1,0 +1,91 @@
+.study-flow-setup {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.study-flow-setup-container {
+  background-color: var(--background-color-light);
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+}
+
+.study-flow-setup-container h1 {
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.stepper {
+  margin-bottom: 2.5rem;
+}
+
+/* Style for the stepper icons */
+.stepper .MuiStepIcon-root.Mui-active {
+  color: var(--primary-color);
+}
+
+.stepper .MuiStepIcon-root.Mui-completed {
+  color: var(--accent-color);
+}
+
+/* Style for the step labels */
+.stepper .MuiStepLabel-label {
+  color: var(--text-color-secondary);
+}
+
+.stepper .MuiStepLabel-label.Mui-active {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.stepper .MuiStepLabel-label.Mui-completed {
+  color: var(--text-color);
+}
+
+.step-content {
+  min-height: 300px;
+  margin-bottom: 2rem;
+}
+
+.step-content h5 {
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+/* Override MUI default styles for better theme integration */
+.study-flow-setup-container .MuiOutlinedInput-root {
+  background-color: var(--background-color);
+}
+
+.study-flow-setup-container .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-color);
+}
+
+.study-flow-setup-container .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: var(--primary-color);
+}
+
+.study-flow-setup-container .MuiInputLabel-root {
+  color: var(--text-color-secondary);
+}
+
+.study-flow-setup-container .MuiButton-containedPrimary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.study-flow-setup-container .MuiButton-containedPrimary:hover {
+  background-color: var(--accent-color);
+} 

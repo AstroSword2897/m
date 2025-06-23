@@ -1,82 +1,71 @@
-.dashboard-page {
-  padding: 40px 20px;
+.dashboard-container {
+  padding-top: 2rem;
 }
 
-.welcome-section {
+.dashboard-container h4 {
   text-align: center;
-  margin-bottom: 50px;
-  padding: 30px;
-  background: linear-gradient(45deg, var(--secondary-purple), var(--primary-pink));
-  border-radius: 15px;
+  margin-bottom: 3rem;
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  text-align: center;
+  color: var(--text-color);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark-mode .feature-card {
+  background: rgba(40, 40, 40, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-light);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-.welcome-title {
-  font-size: 3.5rem !important;
-  font-weight: bold;
-  margin-bottom: 10px !important;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+.feature-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.3);
 }
 
-.welcome-subtitle {
-  font-size: 1.5rem !important;
-  opacity: 0.9;
+.feature-card .MuiSvgIcon-root {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.feature-card h6 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.feature-card .MuiButton-root {
+  background: linear-gradient(135deg, var(--secondary-deep-blue) 0%, var(--primary-blue) 100%);
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  margin-top: auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.feature-card .MuiButton-root:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
 .dashboard-grid {
   margin-top: 30px;
-}
-
-.dashboard-card {
-  background-color: var(--card-background) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 12px !important;
-  padding: 20px !important;
-  text-align: center;
-  color: var(--text-light) !important;
-  height: 100%; /* Ensure cards in a row have equal height */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.dashboard-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
-}
-
-.card-icon {
-  font-size: 3.5rem !important;
-  color: var(--primary-pink);
-  margin-bottom: 15px;
-}
-
-.card-title {
-  font-size: 1.8rem !important;
-  font-weight: bold;
-  margin-bottom: 10px !important;
-  color: var(--primary-pink);
-}
-
-.card-description {
-  font-size: 1rem !important;
-  color: var(--text-muted);
-  margin-bottom: 20px !important;
-  flex-grow: 1; /* Allows description to take available space */
-}
-
-.card-button {
-  background-color: var(--secondary-purple) !important;
-  color: var(--text-light) !important;
-  padding: 12px 25px !important;
-  font-size: 1.1rem !important;
-  border-radius: 8px !important;
-  margin-top: auto; /* Pushes button to the bottom */
-}
-
-.card-button:hover {
-  background-color: var(--primary-pink) !important;
-  transform: scale(1.05);
 } 

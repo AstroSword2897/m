@@ -6,6 +6,10 @@ declare global {
       user?: {
         id: string;
       };
+      recaptcha?: {
+        error?: string;
+        data?: any;
+      };
     }
   }
 } 

@@ -1,0 +1,83 @@
+:root {
+  --primary-blue: #00A9FF;
+  --secondary-deep-blue: #0052D4;
+  --text-color: #333;
+  --text-light: #f8f8f8;
+  --card-background: #ffffff;
+  --border-color: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --success-color: #4caf50;
+  --error-color: #f44336;
+}
+
+.dark-mode {
+  --text-color: #f8f8f8;
+  --card-background: #2a2a2a;
+  --border-color: #444;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
+  background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode body {
+    background: linear-gradient(120deg, #29323c 0%, #485563 100%);
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #f0f2f5;
+}
+
+.navigation {
+  width: 250px;
+  background-color: #001529;
+  color: white;
+  padding: 20px;
+}
+
+.navigation .logo {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navigation li a {
+  display: block;
+  padding: 12px 20px;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navigation li a:hover {
+  background-color: #1890ff;
+  color: white;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 30px;
+  overflow-y: auto;
+} 

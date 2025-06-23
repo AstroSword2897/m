@@ -27,3 +27,103 @@
 {"code":"23505","constraint":"pg_class_relname_nsp_index","detail":"Key (relname, relnamespace)=(notes_id_seq, 2200) already exists.","file":"nbtinsert.c","length":255,"level":"error","line":"673","message":"Error connecting to PostgreSQL or creating table: duplicate key value violates unique constraint \"pg_class_relname_nsp_index\"","name":"error","routine":"_bt_check_unique","schema":"pg_catalog","severity":"ERROR","stack":"error: duplicate key value violates unique constraint \"pg_class_relname_nsp_index\"\n    at /Users/nani/m/backend/node_modules/pg-pool/index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async connectDB (/Users/nani/m/backend/src/index.ts:63:5)\n    at async startServer (/Users/nani/m/backend/src/index.ts:84:5)","table":"pg_class","timestamp":"2025-06-21T04:37:43.039Z"}
 {"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-21T04:37:48.225Z"}
 {"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-21T04:37:48.275Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-21T04:38:34.142Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-21T04:38:34.159Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-06-21T04:38:34.160Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [21/Jun/2025:04:38:40 +0000] \"GET /health HTTP/1.1\" 200 54 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-21T04:38:40.650Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-21T22:28:50.214Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-21T22:28:50.243Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-21T22:28:50.244Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [21/Jun/2025:22:29:02 +0000] \"GET /health HTTP/1.1\" 200 54 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-21T22:29:02.250Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:23:15.241Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:23:15.262Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:23:15.263Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:30:40.567Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:30:40.585Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:30:40.586Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:30:46.514Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:30:46.539Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:30:46.540Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:32:08.642Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:32:08.662Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:32:08.663Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:32:10.017Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:32:10.042Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:32:10.043Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:32:19.037Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:32:19.058Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:32:19.059Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:32:20.626Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:32:20.647Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:32:20.647Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:32:25.615Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:32:25.636Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:32:25.637Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:32:31.169Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:32:31.192Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:32:31.193Z"}
+{"level":"error","message":"Unexpected error: callback is required","stack":"Error: callback is required\n    at RecaptchaV3.renderWith (/Users/nani/m/backend/node_modules/express-recaptcha/dist/v3.js:65:19)\n    at RecaptchaV3.render (/Users/nani/m/backend/node_modules/express-recaptcha/dist/v3.js:54:21)\n    at render (/Users/nani/m/backend/node_modules/express-recaptcha/dist/v3.js:32:43)\n    at Layer.handle [as handle_request] (/Users/nani/m/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/nani/m/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/nani/m/backend/node_modules/express/lib/router/index.js:286:9\n    at Function.process_params (/Users/nani/m/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/nani/m/backend/node_modules/express/lib/router/index.js:280:10)\n    at expressInit (/Users/nani/m/backend/node_modules/express/lib/middleware/init.js:40:5)\n    at Layer.handle [as handle_request] (/Users/nani/m/backend/node_modules/express/lib/router/layer.js:95:5)","timestamp":"2025-06-22T23:32:51.817Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:35:08.924Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:35:08.945Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:35:08.946Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:35:14.487Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:35:14.504Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:35:14.505Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:35:17.929Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:35:17.948Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:35:17.949Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:35:26.378Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:35:26.397Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:35:26.398Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [22/Jun/2025:23:35:33 +0000] \"GET /health HTTP/1.1\" 200 54 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-22T23:35:33.928Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:35:37.573Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:35:37.592Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:35:37.593Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:35:46.328Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:35:46.353Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:35:46.354Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:35:51.801Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:35:51.820Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:35:51.821Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:36:03.409Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:36:03.430Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:36:03.430Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:36:05.731Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:36:05.750Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:36:05.751Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [22/Jun/2025:23:36:14 +0000] \"GET /health HTTP/1.1\" 200 54 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-22T23:36:14.777Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [22/Jun/2025:23:36:18 +0000] \"POST /api/users/register HTTP/1.1\" 400 31 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-22T23:36:18.055Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:36:29.306Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:36:29.327Z"}
+{"level":"info","message":"Users table ensured to exist.","timestamp":"2025-06-22T23:36:29.339Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:36:29.340Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:36:30.955Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:36:30.975Z"}
+{"level":"info","message":"Users table ensured to exist.","timestamp":"2025-06-22T23:36:30.975Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:36:30.976Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:36:42.749Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:36:42.766Z"}
+{"level":"info","message":"Users table ensured to exist.","timestamp":"2025-06-22T23:36:42.767Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:36:42.768Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:41:07.778Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:41:07.794Z"}
+{"level":"info","message":"Users table ensured to exist.","timestamp":"2025-06-22T23:41:07.794Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:41:07.795Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [22/Jun/2025:23:41:10 +0000] \"GET /health HTTP/1.1\" 200 54 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-22T23:41:10.042Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [22/Jun/2025:23:41:13 +0000] \"POST /api/users/register HTTP/1.1\" 201 289 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-22T23:41:13.926Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [22/Jun/2025:23:41:17 +0000] \"POST /api/users/login HTTP/1.1\" 200 363 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-22T23:41:17.421Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [22/Jun/2025:23:41:38 +0000] \"GET /health HTTP/1.1\" 200 54 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-22T23:41:38.209Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-22T23:41:53.762Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-22T23:41:53.784Z"}
+{"level":"info","message":"Users table ensured to exist.","timestamp":"2025-06-22T23:41:53.785Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-22T23:41:53.785Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [22/Jun/2025:23:41:55 +0000] \"GET /health HTTP/1.1\" 200 54 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-22T23:41:55.237Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [22/Jun/2025:23:42:06 +0000] \"GET /health HTTP/1.1\" 200 54 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-22T23:42:06.692Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [22/Jun/2025:23:42:09 +0000] \"POST /api/users/register HTTP/1.1\" 201 292 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-22T23:42:09.147Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [22/Jun/2025:23:42:11 +0000] \"POST /api/users/login HTTP/1.1\" 200 366 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-22T23:42:11.644Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-23T00:09:35.308Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-23T00:09:35.325Z"}
+{"level":"info","message":"Users table ensured to exist.","timestamp":"2025-06-23T00:09:35.325Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [23/Jun/2025:00:10:10 +0000] \"POST /api/users/register HTTP/1.1\" 400 37 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-23T00:10:10.131Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [23/Jun/2025:00:10:32 +0000] \"POST /api/users/register HTTP/1.1\" 201 295 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-23T00:10:32.710Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [23/Jun/2025:00:10:37 +0000] \"POST /api/users/login HTTP/1.1\" 200 369 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-23T00:10:37.234Z"}

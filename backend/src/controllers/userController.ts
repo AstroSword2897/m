@@ -1,9 +1,15 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { IUser, UserModel } from '../models/User';
+import { checkRecaptchaValidation } from '../middleware/recaptcha';
 
 export const registerUser = async (req: Request, res: Response) => {
   try {
+    // Check reCAPTCHA validation
+    if (!checkRecaptchaValidation(req)) {
+      return res.status(400).json({ error: 'reCAPTCHA validation failed' });
+    }
+
     const { email, password, name } = req.body;
 
     if (!email || !password || !name) {
@@ -35,6 +41,11 @@ export const registerUser = async (req: Request, res: Response) => {
 
 export const loginUser = async (req: Request, res: Response) => {
   try {
+    // Check reCAPTCHA validation
+    if (!checkRecaptchaValidation(req)) {
+      return res.status(400).json({ error: 'reCAPTCHA validation failed' });
+    }
+
     const { email, password } = req.body;
 
     if (!email || !password) {

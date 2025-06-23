@@ -59,6 +59,7 @@ const connectDB = async () => {
   try {
     await pool.connect();
     logger.info('PostgreSQL Connected');
+    
     // Create notes table if it doesn't exist
     await pool.query(`
       CREATE TABLE IF NOT EXISTS notes (
@@ -71,6 +72,19 @@ const connectDB = async () => {
       );
     `);
     logger.info('Notes table ensured to exist.');
+    
+    // Create users table if it doesn't exist
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        email VARCHAR(255) UNIQUE NOT NULL,
+        password VARCHAR(255) NOT NULL,
+        name VARCHAR(255) NOT NULL,
+        "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+        "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+      );
+    `);
+    logger.info('Users table ensured to exist.');
   } catch (error) {
     logger.error('Error connecting to PostgreSQL or creating table:', error);
     process.exit(1);
