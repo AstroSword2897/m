@@ -127,3 +127,11 @@
 {"level":"info","message":"::ffff:127.0.0.1 - - [23/Jun/2025:00:10:10 +0000] \"POST /api/users/register HTTP/1.1\" 400 37 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-23T00:10:10.131Z"}
 {"level":"info","message":"::ffff:127.0.0.1 - - [23/Jun/2025:00:10:32 +0000] \"POST /api/users/register HTTP/1.1\" 201 295 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-23T00:10:32.710Z"}
 {"level":"info","message":"::ffff:127.0.0.1 - - [23/Jun/2025:00:10:37 +0000] \"POST /api/users/login HTTP/1.1\" 200 369 \"-\" \"curl/7.87.0\"","timestamp":"2025-06-23T00:10:37.234Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-23T00:35:06.628Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-23T00:35:06.648Z"}
+{"level":"info","message":"Users table ensured to exist.","timestamp":"2025-06-23T00:35:06.649Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-23T00:35:06.650Z"}
+{"level":"info","message":"PostgreSQL Connected","timestamp":"2025-06-23T00:36:10.298Z"}
+{"level":"info","message":"Notes table ensured to exist.","timestamp":"2025-06-23T00:36:10.317Z"}
+{"level":"info","message":"Users table ensured to exist.","timestamp":"2025-06-23T00:36:10.318Z"}
+{"level":"info","message":"Server running on port 6000","timestamp":"2025-06-23T00:36:10.319Z"}
