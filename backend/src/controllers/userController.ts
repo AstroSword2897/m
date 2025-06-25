@@ -86,4 +86,24 @@ export const getUserProfile = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(400).json({ error: 'Error fetching profile' });
   }
+};
+
+export const updateUserProfile = async (req: Request, res: Response) => {
+  try {
+    if (!req.user) {
+      return res.status(401).json({ message: 'Not authorized' });
+    }
+    const { name } = req.body;
+    if (!name) {
+      return res.status(400).json({ message: 'Name is required' });
+    }
+    const result = await UserModel.updateUserName(req.user.id, name);
+    if (result) {
+      res.json({ message: 'Profile updated', name });
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    res.status(400).json({ error: 'Error updating profile' });
+  }
 }; 

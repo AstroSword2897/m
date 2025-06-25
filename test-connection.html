@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Connection Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .loading { background-color: #fff3cd; border-color: #ffeaa7; }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Backend Connection Test</h1>
+    <p>This page will test the connection to your backend server running on localhost:6000</p>
+
+    <div class="test-section">
+        <h3>Health Check Test</h3>
+        <button onclick="testHealth()">Test Health Check</button>
+        <div id="health-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>Upload Test</h3>
+        <button onclick="testUpload()">Test Text Upload</button>
+        <div id="upload-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>Browser Console</h3>
+        <p>Check your browser's developer console (F12) for detailed error messages.</p>
+        <div id="console-output"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://127.0.0.1:6000';
+        
+        function log(message) {
+            console.log(message);
+            const output = document.getElementById('console-output');
+            output.innerHTML += '<div>' + new Date().toLocaleTimeString() + ': ' + message + '</div>';
+        }
+
+        async function testHealth() {
+            const resultDiv = document.getElementById('health-result');
+            resultDiv.className = 'loading';
+            resultDiv.innerHTML = 'Testing health check...';
+            
+            try {
+                log('Testing health check...');
+                const response = await fetch(`${API_BASE}/health`);
+                log(`Response status: ${response.status}`);
+                log(`Response headers: ${JSON.stringify(Object.fromEntries(response.headers.entries()))}`);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    log(`Response data: ${JSON.stringify(data)}`);
+                    resultDiv.className = 'success';
+                    resultDiv.innerHTML = `
+                        <h4>✅ Health Check Successful!</h4>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+            } catch (error) {
+                log(`Health check error: ${error.message}`);
+                resultDiv.className = 'error';
+                resultDiv.innerHTML = `
+                    <h4>❌ Health Check Failed</h4>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <p>This usually means:</p>
+                    <ul>
+                        <li>The backend server is not running on port 6000</li>
+                        <li>There's a CORS issue</li>
+                        <li>There's a network connectivity problem</li>
+                    </ul>
+                `;
+            }
+        }
+
+        async function testUpload() {
+            const resultDiv = document.getElementById('upload-result');
+            resultDiv.className = 'loading';
+            resultDiv.innerHTML = 'Testing upload...';
+            
+            try {
+                log('Testing upload...');
+                const response = await fetch(`${API_BASE}/api/upload/text`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        text: 'Test upload from browser - ' + new Date().toISOString()
+                    })
+                });
+                
+                log(`Upload response status: ${response.status}`);
+                log(`Upload response headers: ${JSON.stringify(Object.fromEntries(response.headers.entries()))}`);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    log(`Upload response data: ${JSON.stringify(data)}`);
+                    resultDiv.className = 'success';
+                    resultDiv.innerHTML = `
+                        <h4>✅ Upload Successful!</h4>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    const errorText = await response.text();
+                    throw new Error(`HTTP ${response.status}: ${errorText}`);
+                }
+            } catch (error) {
+                log(`Upload error: ${error.message}`);
+                resultDiv.className = 'error';
+                resultDiv.innerHTML = `
+                    <h4>❌ Upload Failed</h4>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+
+        // Auto-test on page load
+        window.onload = function() {
+            log('Page loaded, starting auto-test...');
+            setTimeout(testHealth, 1000);
+        };
+    </script>
+</body>
+</html> 

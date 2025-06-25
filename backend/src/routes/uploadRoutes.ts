@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import multer from 'multer';
-import { uploadChunk, parseFile } from '../controllers/uploadController';
+import { uploadChunk, parseFile, uploadText } from '../controllers/uploadController';
 
 const router = Router();
 const upload = multer({ 
@@ -9,6 +9,7 @@ const upload = multer({
 });
 
 router.post('/upload/chunk', upload.single('chunk'), uploadChunk);
+router.post('/upload/text', uploadText);
 router.post('/parse/:fileId', parseFile);
 
 export default router; 

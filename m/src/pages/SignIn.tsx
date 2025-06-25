@@ -2,19 +2,26 @@ import React, { useState } from 'react';
 import { Container, Typography, TextField, Button, Box, Paper } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import ReCAPTCHA from 'react-google-recaptcha';
 import './SignIn.css';
+
+const SITE_KEY = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!recaptchaToken) {
+      setError('Please complete the reCAPTCHA.');
+      return;
+    }
     try {
-      const response = await axios.post('/api/users/login', { email, password });
-      // Assuming the token is in response.data.token
+      const response = await axios.post('/api/users/login', { email, password, recaptchaToken });
       localStorage.setItem('token', response.data.token);
       navigate('/dashboard');
     } catch (err) {
@@ -50,6 +57,12 @@ const SignIn: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <Box sx={{ my: 2, display: 'flex', justifyContent: 'center' }}>
+            <ReCAPTCHA
+              sitekey={SITE_KEY}
+              onChange={token => setRecaptchaToken(token)}
+            />
+          </Box>
           {error && (
             <Typography color="error" variant="body2">
               {error}

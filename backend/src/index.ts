@@ -18,11 +18,18 @@ dotenv.config();
 
 const app = express();
 
-// Security middleware
-app.use(helmet());
+// CORS configuration - more permissive for development
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3001',
-  credentials: true
+  origin: ['http://localhost:3001', 'http://localhost:4212', 'http://localhost:4213', 'http://127.0.0.1:4213'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+}));
+
+// Security middleware - configure Helmet to work with CORS
+app.use(helmet({
+  crossOriginEmbedderPolicy: false,
+  crossOriginResourcePolicy: { policy: "cross-origin" }
 }));
 
 // Rate limiting
@@ -92,11 +99,11 @@ const connectDB = async () => {
 };
 
 // Start server
-const PORT = process.env.PORT || 3000;
+const PORT = parseInt(process.env.PORT || '3001', 10);
 const startServer = async () => {
   try {
     await connectDB();
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
       logger.info(`Server running on port ${PORT}`);
     });
   } catch (error) {

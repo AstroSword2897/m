@@ -25,6 +25,7 @@ import {
   EmojiEvents as EmojiEventsIcon,
 } from '@mui/icons-material';
 import './UserProfile.css';
+import axios from 'axios';
 
 interface UserProfileData {
   name: string;
@@ -50,17 +51,48 @@ const UserProfile: React.FC = () => {
   const [profile, setProfile] = useState<UserProfileData>(dummyUserProfile);
   const [isEditing, setIsEditing] = useState(false);
   const [editedProfile, setEditedProfile] = useState<UserProfileData>({ ...dummyUserProfile });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  React.useEffect(() => {
+    const fetchProfile = async () => {
+      setLoading(true);
+      setError('');
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) throw new Error('Not authenticated');
+        const response = await axios.get('/api/users/me', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setProfile(response.data);
+        setEditedProfile(response.data);
+      } catch (err: any) {
+        setError('Failed to load profile.');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProfile();
+  }, []);
 
   const handleEditClick = () => {
     setIsEditing(true);
     setEditedProfile({ ...profile });
   };
 
-  const handleSaveClick = () => {
-    // In a real app, this would send data to a backend API
-    setProfile(editedProfile);
-    setIsEditing(false);
-    alert('Profile updated successfully!');
+  const handleSaveClick = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) throw new Error('Not authenticated');
+      const response = await axios.put('/api/users/profile', { name: editedProfile.name }, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setProfile(prev => ({ ...prev, name: editedProfile.name }));
+      setIsEditing(false);
+      alert('Profile updated successfully!');
+    } catch (err) {
+      alert('Failed to update profile.');
+    }
   };
 
   const handleCancelClick = () => {
@@ -79,6 +111,9 @@ const UserProfile: React.FC = () => {
       [field]: value.split(',').map(item => item.trim()).filter(item => item !== ''),
     }));
   };
+
+  if (loading) return <div>Loading profile...</div>;
+  if (error) return <div style={{ color: 'red' }}>{error}</div>;
 
   return (
     <Container maxWidth="lg" className="user-profile-page">

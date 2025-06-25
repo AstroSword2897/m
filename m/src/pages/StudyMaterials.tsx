@@ -20,6 +20,8 @@ import {
   Delete as DeleteIcon,
   Edit as EditIcon,
 } from '@mui/icons-material';
+import FileUpload from '../components/FileUpload';
+import ConnectionTest from '../components/ConnectionTest';
 import './StudyMaterials.css';
 
 interface StudyMaterial {
@@ -101,6 +103,10 @@ const StudyMaterials: React.FC = () => {
           Add New Material
         </Button>
       </Box>
+
+      <ConnectionTest />
+
+      <FileUpload />
 
       <Box className="materials-filters">
         <TextField

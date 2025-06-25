@@ -16,6 +16,7 @@ import StudySessions from './pages/StudySessions'
 import StudyFlowSetup from './pages/StudyFlowSetup'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
+import PrivateRoute from './components/PrivateRoute'
 import './App.css'
 
 function App() {
@@ -30,18 +31,18 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/" element={<StudyFlowSetup />} />
             <Route path="/study-plan" element={<StudyFlowSetup />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/subjects" element={<Subjects />} />
-            <Route path="/study-materials" element={<StudyMaterials />} />
-            <Route path="/studysessions" element={<StudySessions />} />
-            <Route path="/practice" element={<Practice />} />
-            <Route path="/flashcards" element={<Flashcards />} />
-            <Route path="/schedule" element={<Schedule />} />
-            <Route path="/progress" element={<Progress />} />
-            <Route path="/collaborate" element={<Collaborate />} />
-            <Route path="/profile" element={<UserProfile />} />
-            <Route path="/analytics" element={<Analytics />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+            <Route path="/subjects" element={<PrivateRoute><Subjects /></PrivateRoute>} />
+            <Route path="/study-materials" element={<PrivateRoute><StudyMaterials /></PrivateRoute>} />
+            <Route path="/studysessions" element={<PrivateRoute><StudySessions /></PrivateRoute>} />
+            <Route path="/practice" element={<PrivateRoute><Practice /></PrivateRoute>} />
+            <Route path="/flashcards" element={<PrivateRoute><Flashcards /></PrivateRoute>} />
+            <Route path="/schedule" element={<PrivateRoute><Schedule /></PrivateRoute>} />
+            <Route path="/progress" element={<PrivateRoute><Progress /></PrivateRoute>} />
+            <Route path="/collaborate" element={<PrivateRoute><Collaborate /></PrivateRoute>} />
+            <Route path="/profile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
+            <Route path="/analytics" element={<PrivateRoute><Analytics /></PrivateRoute>} />
+            <Route path="/settings" element={<PrivateRoute><Settings /></PrivateRoute>} />
           </Routes>
         </main>
       </div>
