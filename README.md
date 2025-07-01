@@ -5,11 +5,12 @@ StudyFlow is a modern, AI-powered study application designed to help you master 
 ## Features
 
 - **AI-Powered Content Generation**: Upload PDF, TXT, or DOCX files, and StudyFlow will automatically create flashcards and practice quizzes based on the content.
+- **Customizable Study Plan**: Create, edit, and organize your study sessions with a fully interactive, drag-and-drop board. Personalize your plan by topic, time, type, color, and layout.
 - **Interactive Flashcards**: Create, edit, and study flashcards with a sleek, interactive interface.
 - **Practice Quizzes**: Test your knowledge with multiple-choice quizzes generated from your study materials.
 - **Progress Tracking**: Visualize your study sessions and track your performance over time with detailed analytics and charts.
 - **Dynamic Scheduling**: Plan your study sessions with a fully interactive calendar.
-- **Collaborative Study Groups**: Create or join study groups to chat and share materials with your peers.
+- **Collaborative Study Groups**: Create or join study groups to chat and share materials with your peers. Unread messages trigger email and webhook notifications.
 - **Customizable Settings**: Tailor the application to your needs with customizable themes and data management options.
 - **Large File Support**: Upload and process files up to 1GB, with chunked uploading and progress tracking.
 
@@ -17,9 +18,9 @@ StudyFlow is a modern, AI-powered study application designed to help you master 
 
 ### Frontend
 
-- **Angular 18**: A powerful framework for building dynamic single-page applications.
+- **React 18**: Modern, component-based UI library for building single-page applications.
 - **TypeScript**: For robust, type-safe code.
-- **SCSS**: For advanced and maintainable styling.
+- **Material-UI (MUI)**: For beautiful, accessible UI components.
 - **LocalStorage**: To persist data and provide an offline-first experience.
 
 ### Backend
@@ -38,7 +39,7 @@ Follow these instructions to get the project up and running on your local machin
 
 - **Node.js**: Version `20.19.0` or higher. We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage Node.js versions.
 - **PostgreSQL**: A running PostgreSQL server. We recommend [Postgres.app](https://postgresapp.com/) for macOS users.
-- **Angular CLI**: `npm install -g @angular/cli`
+- **npm**: Comes with Node.js for managing dependencies.
 
 ### 1. Clone the Repository
 
@@ -91,7 +92,7 @@ cd ..
     DB_PASSWORD=your_postgres_password
     DB_PORT=5432
     JWT_SECRET=this_is_a_super_secret_key_for_jwt
-    FRONTEND_URL=http://localhost:4204
+    FRONTEND_URL=http://localhost:4213
     ```
 
 ### 6. Run the Application
@@ -106,10 +107,10 @@ You'll need to run both the backend and frontend servers simultaneously.
 
 - **Start the Frontend Server** (from the root directory, in a separate terminal):
   ```bash
-  ng serve
+  npm run dev
   ```
 
-The application will be available at http://localhost:4204.
+The application will be available at http://localhost:4213.
 
 ## Pushing Changes to GitHub
 
@@ -129,25 +130,19 @@ git push origin main
 ## Project Structure
 
 ```
-src/
-├── app/
+m/
+├── backend/
+│   ├── src/
+│   └── ...
+├── src/
 │   ├── components/
-│   │   └── navigation/
 │   ├── pages/
-│   │   ├── dashboard/
-│   │   ├── flashcards/
-│   │   ├── practice/
-│   │   ├── progress/
-│   │   ├── schedule/
-│   │   ├── collaborate/
-│   │   └── settings/
-│   ├── app.component.ts
-│   ├── app.config.ts
-│   └── app.routes.ts
-├── assets/
-├── index.html
-├── main.ts
-└── styles.scss
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── ...
+├── package.json
+├── README.md
+└── ...
 ```
 
 ## Contributing

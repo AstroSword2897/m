@@ -7,7 +7,6 @@ import {
   Button,
   TextField,
   Paper,
-  Grid,
   Chip,
   List,
   ListItem,
@@ -26,6 +25,7 @@ import {
 } from '@mui/icons-material';
 import './UserProfile.css';
 import axios from 'axios';
+import Grid from '@mui/material/Grid';
 
 interface UserProfileData {
   name: string;
@@ -35,6 +35,9 @@ interface UserProfileData {
   preferredSubjects: string[];
   totalStudyHours: number;
   achievements: string[];
+  studyGoal?: string;
+  preferredTime?: string;
+  subjects?: { name: string; difficulty: string; hours: number; topics?: string[] }[];
 }
 
 const dummyUserProfile: UserProfileData = {
@@ -45,6 +48,13 @@ const dummyUserProfile: UserProfileData = {
   preferredSubjects: ['Mathematics', 'Physics', 'Computer Science'],
   totalStudyHours: 1250,
   achievements: ['Top Scorer in Algebra Exam', 'Completed Advanced Calculus Course', 'Won Regional Science Fair'],
+  studyGoal: 'Master Calculus',
+  preferredTime: '3 hours/week',
+  subjects: [
+    { name: 'Mathematics', difficulty: 'Hard', hours: 3 },
+    { name: 'Physics', difficulty: 'Medium', hours: 2 },
+    { name: 'Computer Science', difficulty: 'Easy', hours: 1 },
+  ],
 };
 
 const UserProfile: React.FC = () => {
@@ -170,6 +180,31 @@ const UserProfile: React.FC = () => {
               {profile.bio}
             </Typography>
           )}
+        </Box>
+
+        <Box className="profile-section">
+          <Typography variant="h5" component="h2" gutterBottom className="section-title">
+            Study Plan Info
+          </Typography>
+          <Typography variant="subtitle1"><b>Main Study Goal:</b> {profile.studyGoal || 'Not set'}</Typography>
+          <Typography variant="subtitle1"><b>Preferred Study Time:</b> {profile.preferredTime || 'Not set'}</Typography>
+          <Box mt={2}>
+            <Typography variant="subtitle1"><b>Subjects:</b></Typography>
+            {profile.subjects && profile.subjects.length > 0 ? (
+              <List>
+                {profile.subjects.map((subject, idx) => (
+                  <ListItem key={idx} alignItems="flex-start">
+                    <ListItemText
+                      primary={`${subject.name} (Difficulty: ${subject.difficulty}, Hours/week: ${subject.hours})`}
+                      secondary={subject.topics && subject.topics.length > 0 ? `Topics: ${subject.topics.join(', ')}` : 'No topics'}
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            ) : (
+              <Typography variant="body2">No subjects added yet.</Typography>
+            )}
+          </Box>
         </Box>
 
         <Grid container spacing={3} className="profile-details-grid">

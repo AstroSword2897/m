@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Stepper, Step, StepLabel, Button, TextField, FormControl, InputLabel, Select, MenuItem, Paper, Typography, Box, Chip, Card, CardContent, CardActions, IconButton, Grid } from '@mui/material';
+import { Stepper, Step, StepLabel, Button, TextField, FormControl, InputLabel, Select, MenuItem, Paper, Typography, Box, Chip, Card, CardContent, CardActions, IconButton } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Grid from '@mui/material/Grid';
 import './StudyFlowSetup.css';
 
 const steps = ['Study Goals', 'Subjects & Topics', 'Study Preferences', 'Generate Your Study Plan'];

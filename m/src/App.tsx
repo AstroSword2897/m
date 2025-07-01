@@ -17,6 +17,7 @@ import StudyFlowSetup from './pages/StudyFlowSetup'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import PrivateRoute from './components/PrivateRoute'
+import StudyPlan from './pages/StudyPlan'
 import './App.css'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/" element={<StudyFlowSetup />} />
             <Route path="/study-plan" element={<StudyFlowSetup />} />
+            <Route path="/studyplan" element={<PrivateRoute><StudyPlan /></PrivateRoute>} />
             <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
             <Route path="/subjects" element={<PrivateRoute><Subjects /></PrivateRoute>} />
             <Route path="/study-materials" element={<PrivateRoute><StudyMaterials /></PrivateRoute>} />
